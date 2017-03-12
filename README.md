@@ -42,7 +42,7 @@
 
 ## Team 4
 - Jinwoo
-- Kevin N
+- Kevin C
 - Andres
 - Erik
 - **Mentor**: tba
