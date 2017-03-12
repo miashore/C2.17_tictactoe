@@ -6,6 +6,7 @@
 - Player-selected gameboard size between 3 or at least 5 size game board
 - Players must be displayed.  The turn of the player must be displayed
 - Player-selected win-condition size between 3 and the maximum current board size
+- Win condition must be able to be dynamically determined based off any size board
 - Mystery Requirement - coming soon!
 
 
