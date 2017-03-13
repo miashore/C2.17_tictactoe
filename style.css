@@ -1,11 +1,18 @@
 body {
     margin: 0;
 }
+
+h1 {
+    text-align: center;
+}
+
 #gameContainer {
     width: 60vw;
     height: 60vh;
+    margin: 30px auto 0 auto;
     background-color: lightblue;
 }
+
 .gameCells {
     width: 20vw;
     height: 20vh;
@@ -16,11 +23,20 @@ body {
     box-sizing: border-box;
 }
 
-.players {
-    width: 20vw;
-    height: 20vh;
+#userContainer {
+    height: 18vh;
+    width: 51vh;
+    background-color: black;
+    margin: 30px auto 0 auto;
+}
+
+#playerOne, #playerTwo {
+    width: 50%;
+    height: 100%;
     border: 1px solid black;
     text-align: center;
-    font-size: 1vw;
+    font-size: 2vw;
     box-sizing: border-box;
+    float: left;
+    background-color: forestgreen;
 }
