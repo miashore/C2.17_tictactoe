@@ -4,7 +4,7 @@ $(document).ready(function(){
 
     function changePlayer(){
         $('.gameCells').click(function(){
-            if(counter%2 === 0) {
+            if(counter%2 !== 0) {
                 $('#playerOne').removeClass('selected');
                 $('#playerTwo').addClass('selected');
             }
