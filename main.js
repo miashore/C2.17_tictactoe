@@ -1,21 +1,23 @@
 
-
+ var counter = 0;
 $(document).ready(function(){
 
-    function cellClickX(){
+
+    function cellClick(){
         $('.gameCells').click(function(){
-            $(this).text('X');
-        });
-    }
-    function cellClickO(){
-        $('.gameCells').click(function(){
-            $(this).text('O');
+            if (counter%2 === 0) {
+                $(this).text('X');
+            }
+            else{
+                $(this).text('O');
+            }
+            counter++;
         });
     }
 
     function clickHandler(){
-        cellClickX();
-        cellClickO();
+        cellClick();
     }
     clickHandler();
+
 });
