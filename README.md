@@ -36,7 +36,7 @@
 - **Mentor**: tba
 
 ## Team 3
-- Hanlin
+- Andres
 - Josh
 - Donald
 - **Mentor**: tba
@@ -44,9 +44,12 @@
 ## Team 4
 - Jinwoo
 - Kevin C
-- Andres
+
 - Erik
 - **Mentor**: tba
+
+## unassigned
+- Hanlin
 
 ### Requirement for submission
 - Live copy link to gh-pages: 
