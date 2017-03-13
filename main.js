@@ -17,7 +17,17 @@ var players = [
         }
     }
 ];
-var winCheckArray = [[],[],[]];
+
+//Possible winning combinations
+// [0,0,0] [0, , ] [ ,0, ] [ , ,0] [ , , ] [ , , ] [0, , ] [ , ,0]
+// [ , , ] [0, , ] [ ,0, ] [ , ,0] [0,0,0] [ , , ] [ ,0, ] [ ,0, ]
+// [ , , ] [0, , ] [ ,0, ] [ , ,0] [ , , ] [0,0,0] [ , ,0] [0, , ]
+
+var winCheckArray = [
+    [],
+    [],
+    []
+];
 
 var currentPlayer = 1;
 $(document).ready(function() {
@@ -32,8 +42,9 @@ function cellClickHandler(){
     if($(this).text()==='') {
         changePlayer();
         cellShowSymbol(this);
-        pushToWinArray();
+        pushToWinArray(this);
     }
+    checkIfPlayerHasWon(currentPlayer);
 }
 function changePlayer(){
         currentPlayer = 1-currentPlayer;
@@ -43,8 +54,49 @@ function changePlayer(){
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
-function pushToWinArray(){
-    winCheckArray[0].push(currentPlayer);
+//**********************************************************************************************************************
+function pushToWinArray(x){
+    if($(x).hasClass('row1')) {
+        if($(x).hasClass('col1')){
+            winCheckArray[0][0] = currentPlayer;
+        }
+        else if($(x).hasClass('col2')){
+            winCheckArray[0][1] = currentPlayer;
+        }
+        else if($(x).hasClass('col3')){
+            winCheckArray[0][2] = currentPlayer;
+        }
+    }
+    else if($(x).hasClass('row2')){
+        if($(x).hasClass('col1')){
+            winCheckArray[1][0] = currentPlayer;
+        }
+        else if($(x).hasClass('col2')){
+            winCheckArray[1][1] = currentPlayer;
+        }
+        else if($(x).hasClass('col3')){
+            winCheckArray[1][2] = currentPlayer;
+        }
+    }
+    else if($(x).hasClass('row3')){
+        if($(x).hasClass('col1')){
+            winCheckArray[2][0] = currentPlayer;
+        }
+        else if($(x).hasClass('col2')){
+            winCheckArray[2][1] = currentPlayer;
+        }
+        else if($(x).hasClass('col3')){
+            winCheckArray[2][2] = currentPlayer;
+        }
+    }
+}
+//**********************************************************************************************************************
+function checkIfPlayerHasWon(y){
+    for (var i=0; i<winCheckArray.length;i++){
+        for(var j=0; j<winCheckArray[i].length;j++){
+        }
+        console.log(winCheckArray);
+    }
 }
 
 
