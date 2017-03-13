@@ -4,20 +4,20 @@ var players = [
         symbol:'X',
         name:'dude',
         onBecomeCurrentPlayer: function(){
-            $('.players').removeClass('selected');
-            $('.players').addClass('selected');
+            $('#playerOne').removeClass('selected');
+            $('#playerTwo').addClass('selected');
         }
     },
     {
         symbol: 'O',
         name:'dudette',
         onBecomeCurrentPlayer: function(){
-            $('.players').removeClass('selected');
-            $('.players').addClass('selected');
+            $('#playerTwo').removeClass('selected');
+            $('#playerOne').addClass('selected');
         }
     }
 ];
-var currentPlayer = 0;
+var currentPlayer = 1;
 $(document).ready(function() {
     applyClickHandlers();
 
