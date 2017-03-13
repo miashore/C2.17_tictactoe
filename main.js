@@ -27,8 +27,10 @@ function applyClickHandlers(){
     $('.gameCells').click(cellClickHandler);
 }
 function cellClickHandler(){
-    changePlayer();
-    cellShowSymbol(this);
+    if($(this).text()==='') {
+        changePlayer();
+        cellShowSymbol(this);
+    }
 }
 function changePlayer(){
         currentPlayer = 1-currentPlayer;
