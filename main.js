@@ -5,10 +5,10 @@ $(document).ready(function(){
 
     function cellClick(){
         $('.gameCells').click(function(){
-            if (counter%2 === 0) {
+            if (counter%2 === 0 && $(this).text()==='') {
                 $(this).text('X');
             }
-            else{
+            else if(counter%2 !== 0 && $(this).text() ===''){
                 $(this).text('O');
             }
             counter++;
