@@ -17,7 +17,7 @@ var players = [
         }
     }
 ];
-var currentPlayer = 0;
+var currentPlayer = 1;
 $(document).ready(function() {
     applyClickHandlers();
 
