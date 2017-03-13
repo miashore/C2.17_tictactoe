@@ -17,6 +17,8 @@ var players = [
         }
     }
 ];
+var winCheckArray = [[],[],[]];
+
 var currentPlayer = 1;
 $(document).ready(function() {
     applyClickHandlers();
@@ -30,6 +32,7 @@ function cellClickHandler(){
     if($(this).text()==='') {
         changePlayer();
         cellShowSymbol(this);
+        pushToWinArray();
     }
 }
 function changePlayer(){
@@ -37,8 +40,11 @@ function changePlayer(){
         players[currentPlayer].onBecomeCurrentPlayer();
 
 }
-
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
+function pushToWinArray(){
+    winCheckArray[0].push(currentPlayer);
+}
+
 
