@@ -94,8 +94,15 @@ function pushToWinArray(x){
 function checkIfPlayerHasWon(y){
     for (var i=0; i<winCheckArray.length;i++){
         for(var j=0; j<winCheckArray[i].length;j++){
+            if(j+2 === undefined){
+                return;
+            }
+            if(winCheckArray[i][j] === y && winCheckArray[i][j+1] === y && winCheckArray[i][j+2] === y
+            || winCheckArray[i][j] === y && winCheckArray[i+1][j] === y && winCheckArray[i+2][j] === y
+            || winCheckArray[i][j] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j+2] === y
+            || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y)
+                alert(players[currentPlayer].symbol + ' has won');
         }
-        console.log(winCheckArray);
     }
 }
 
