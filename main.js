@@ -4,16 +4,16 @@ var players = [
         symbol:'X',
         name:'dude',
         onBecomeCurrentPlayer: function(){
-            $('#playerOne').removeClass('selected');
-            $('#playerTwo').addClass('selected');
+            $('.players').removeClass('selected');
+            $('.players').addClass('selected');
         }
     },
     {
         symbol: 'O',
         name:'dudette',
         onBecomeCurrentPlayer: function(){
-            $('#playerTwo').removeClass('selected');
-            $('#playerOne').addClass('selected');
+            $('.players').removeClass('selected');
+            $('.players').addClass('selected');
         }
     }
 ];
