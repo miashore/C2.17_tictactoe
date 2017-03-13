@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+}
+#gameContainer {
+    width: 60vw;
+    height: 60vh;
+    background-color: lightblue;
+}
+.gameCells {
+    width: 20vw;
+    height: 20vw;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 2em;
+}
