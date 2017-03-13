@@ -4,8 +4,14 @@ $(document).ready(function(){
 
     function changePlayer(){
         $('.gameCells').click(function(){
-            $('#playerOne').removeClass('selected');
-            $('#playerTwo').addClass('selected');
+            if(counter%2 === 0) {
+                $('#playerOne').removeClass('selected');
+                $('#playerTwo').addClass('selected');
+            }
+            else{
+                $('#playerTwo').removeClass('selected');
+                $('#playerOne').addClass('selected');
+            }
         });
 
     }
