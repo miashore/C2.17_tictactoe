@@ -2,6 +2,13 @@
  var counter = 0;
 $(document).ready(function(){
 
+    function changePlayer(){
+        $('.gameCells').click(function(){
+            $('#playerOne').removeClass('selected');
+            $('#playerTwo').addClass('selected');
+        });
+
+    }
 
     function cellClick(){
         $('.gameCells').click(function(){
@@ -17,6 +24,7 @@ $(document).ready(function(){
 
     function clickHandler(){
         cellClick();
+        changePlayer();
     }
     clickHandler();
 
