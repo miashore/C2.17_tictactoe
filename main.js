@@ -1,23 +1,42 @@
-
- var counter = 0;
-$(document).ready(function(){
-
-
-    function cellClick(){
-        $('.gameCells').click(function(){
-            if (counter%2 === 0 && $(this).text()==='') {
-                $(this).text('X');
-            }
-            else if(counter%2 !== 0 && $(this).text() ===''){
-                $(this).text('O');
-            }
-            counter++;
-        });
+var counter = 0;
+var players = [
+    {
+        symbol:'X',
+        name:'dude',
+        onBecomeCurrentPlayer: function(){
+            $('#playerOne').removeClass('selected');
+            $('#playerTwo').addClass('selected');
+        }
+    },
+    {
+        symbol: 'O',
+        name:'dudette',
+        onBecomeCurrentPlayer: function(){
+            $('#playerTwo').removeClass('selected');
+            $('#playerOne').addClass('selected');
+        }
     }
-
-    function clickHandler(){
-        cellClick();
-    }
-    clickHandler();
+];
+var currentPlayer = 0;
+$(document).ready(function() {
+    applyClickHandlers();
 
 });
+
+function applyClickHandlers(){
+    $('.gameCells').click(cellClickHandler);
+}
+function cellClickHandler(){
+    changePlayer();
+    cellShowSymbol(this);
+}
+function changePlayer(){
+        currentPlayer = 1-currentPlayer;
+        players[currentPlayer].onBecomeCurrentPlayer();
+
+}
+
+function cellShowSymbol(cellThatWasClicked){
+    $(cellThatWasClicked).text(players[currentPlayer].symbol)
+}
+
