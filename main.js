@@ -37,6 +37,7 @@ $(document).ready(function() {
 
 function applyClickHandlers(){
     $('.gameCells').click(cellClickHandler);
+    $('#reset').click(resetGame);
 }
 function cellClickHandler(){
     if($(this).text()==='') {
@@ -54,6 +55,8 @@ function changePlayer(){
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
+<<<<<<< HEAD
+=======
 //**********************************************************************************************************************
 function pushToWinArray(x){
     if($(x).hasClass('row1')) {
@@ -107,3 +110,4 @@ function checkIfPlayerHasWon(y){
 }
 
 
+>>>>>>> fad75fdb6f7af6e6331f134ce84c0b4e4e75c092
