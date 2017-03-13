@@ -26,7 +26,7 @@ h1 {
 #userContainer {
     height: 18vh;
     width: 51vh;
-    background-color: black;
+    /*background-color: black;*/
     margin: 30px auto 0 auto;
 }
 
@@ -43,4 +43,17 @@ h1 {
 
 div .selected {
     background-color: green;
+}
+
+#buttonContainer {
+    width: 8vw;
+    margin: 0 auto;
+}
+
+button {
+    margin: 10px auto;
+}
+
+.gameType {
+    display: inline;
 }
