@@ -164,14 +164,14 @@ function createGameBoard(){
 //**********************************************************************************************************************
 function boardUpdated(cellClicked){//firebase object data
     console.log('current board status is ', cellClicked);
-    for(var i = 0; i < winCheckArray.length; i++){
-        for(var j = 0; j < winCheckArray[i].length; j++){
+    // for(var i = 0; i < winCheckArray.length; i++){
+    //     for(var j = 0; j < winCheckArray[i].length; j++){
             // if(winCheckArray[i][j] === 0){
             // }
             console.log(cellClicked, i, j);
             $(cellClicked).text(players[currentPlayer].symbol);
-        }
-    }
+    //     }
+    // }
 }
 //**********************************************************************************************************************
 function saveData(){
