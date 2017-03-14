@@ -1,6 +1,9 @@
 html {
-    height: 100%;
-    width: 100%;
+    background: url(shaolinNinja.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 @font-face {
@@ -11,8 +14,11 @@ html {
 body {
     margin: 0;
     font-family: NinjaFont;
-    background-size: cover;
-    background: linear-gradient(135deg, #000000 55%, #75002e 100%);
+    /*background-image: url('shaolinNinja.png');*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
     color: white;
 }
 
@@ -33,6 +39,7 @@ h1 {
     background-color: lightblue;
     float: right;
     margin-right: 20vw;
+    opacity: .8;
 }
 
 .gameCells {
@@ -53,15 +60,12 @@ h1 {
 #userContainer {
     height: 18vh;
     width: 51vh;
-    /*background-color: black;*/
     margin: 30px auto 0 auto;
 }
 
 .players {
     width: 50%;
     height: 100%;
-    border: 1px solid black;
-    text-align: center;
     font-size: 7vw;
     box-sizing: border-box;
     float: left;
@@ -70,13 +74,19 @@ h1 {
 
 #playerOne {
     background-image: url(ninja_icon.png);
-    background-image: url(ninja_icon.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+#playerTwo {
+    background-image: url(aang.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: right;
+}
+
 div .selected {
-    background-color: red;
+    background-color: #75002e;
 }
 
 #radioButtonContainer {
