@@ -163,7 +163,7 @@ function createGameBoard(){
 }
 //**********************************************************************************************************************
 function boardUpdated(cellClicked){//firebase object data
-    var arrayOfData = cellClicked.data;
+    // var arrayOfData = cellClicked.data;
     console.log('current board status is ', winCheckArray);
     console.log(winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
@@ -177,5 +177,3 @@ function saveData(){
     console.log('saving');
     tttModel.saveState(firebaseObject);
 }
-
-
