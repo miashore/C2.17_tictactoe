@@ -32,6 +32,7 @@ var currentPlayer = 1;
 $(document).ready(function() {
     createGameBoard();
     applyClickHandlers();
+    tttModel = new GenericFBModel('gamekey',boardUpdated);
 });
 //**********************************************************************************************************************
 function applyClickHandlers(){
@@ -108,4 +109,22 @@ function createGameBoard(){
             $('#gameContainer').append(boardPiece);
         }
     }
+}
+var tttModel;
+function boardUpdated(arrayData){//can be any data
+    var updatedArray = arrayData.data;
+    console.log(updatedArray);
+    for(var i = 0; i < updatedArray.length; i++){
+        for(var j = 0; j < updatedArray[i].length; j++){
+             $('.gameCells.row'+i+'.col,'+j).text(players[updatedArray[i][j]].symbol);//updating the board for the other person with the symbol
+        }
+    }
+}
+function saveData(){
+    $('.gameCells').click(function(){
+       console.log('saving');
+       tttModel.saveState({
+            player: current_player;
+       });
+    });
 }
