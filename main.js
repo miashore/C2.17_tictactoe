@@ -95,7 +95,7 @@ function checkIfPlayerHasWon(y){
                     || winCheckArray[i][j] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j + 2] === y
                     || winCheckArray[i][j + 2] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j] === y) {
                     setTimeout(function () {
-                        alert(players[currentPlayer].symbol + ' has won')
+                        alert(players[currentPlayer].name + ' has won')
                     }, 400);
                     canIClick = false;
                 }
@@ -110,7 +110,7 @@ function checkIfPlayerHasWon(y){
                     || winCheckArray[i][j] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j + 2] === y && winCheckArray[i + 3][j + 3] === y
                     || winCheckArray[i][j + 3] === y && winCheckArray[i + 1][j + 2] === y && winCheckArray[i + 2][j+1] === y && winCheckArray[i + 3][j] === y) {
                     setTimeout(function () {
-                        alert(players[currentPlayer].symbol + ' has won')
+                        alert(players[currentPlayer].name + ' has won')
                     }, 400);
                     canIClick = false;
                 }
