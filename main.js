@@ -45,9 +45,11 @@ function cellClickHandler(){
             cellShowSymbol(this);
             pushToWinArray(this);
         }
+        // saveData();//comment out when testing locally (firebase)
+        // boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
-        //saveData();//comment out when testing locally (firebase)
-        boardUpdated(this);
+
+
     }
 }
 function changePlayer(){
@@ -69,6 +71,7 @@ function defineWinCheckArray(){
         winCheckArray = [[],[],[]];
     }
 }
+//**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
         var currentRow = parseInt($(elementClicked).attr('row'));
@@ -158,15 +161,17 @@ function createGameBoard(){
     resetGame();
     defineWinCheckArray();
 }
-
-function boardUpdated(){//firebase object data
-    console.log(winCheckArray);
+//**********************************************************************************************************************
+function boardUpdated(cellClicked){//firebase object data
+    var arrayOfData = cellClicked.data;
+    console.log('current board status is ', winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
             $(cellClicked).text(players[winCheckArray[i][j]].symbol);
         }
     }
 }
+//**********************************************************************************************************************
 function saveData(){
     console.log('saving');
     tttModel.saveState(firebaseObject);
