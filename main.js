@@ -37,6 +37,7 @@ $(document).ready(function() {
 
 function applyClickHandlers(){
     $('.gameCells').click(cellClickHandler);
+    $('#reset').click(resetGame);
 }
 function cellClickHandler(){
     if($(this).text()==='') {
@@ -105,5 +106,3 @@ function checkIfPlayerHasWon(y){
         }
     }
 }
-
-
