@@ -28,8 +28,14 @@ var winCheckArray = [
     []
 ];
 var currentPlayer = 1;
+var tttModel;
+var firebaseObject = {
+    gameState: winCheckArray,
+    currentPlayer: players.symbol
+};
 //**********************************************************************************************************************
 $(document).ready(function() {
+    tttModel = new GenericFBModel('gamekey',boardUpdated);
     applyClickHandlers();
 });
 //**********************************************************************************************************************
@@ -37,7 +43,6 @@ function applyClickHandlers(){
     $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
     $('#reset').click(resetGame);
-
 }
 //**********************************************************************************************************************
 function cellClickHandler(){
@@ -48,22 +53,24 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
+        // winCheckArray = firebaseObject.gameState;
     }
 }
 function changePlayer(){
         currentPlayer = 1-currentPlayer;
         players[currentPlayer].onBecomeCurrentPlayer();
-
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
 //**********************************************************************************************************************
-function pushToWinArray(x) {
+function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
-        if ($(x).hasClass('row' + [i].toString())) {
+        var currentRow = parseInt($(elementClicked).attr('row'));
+        if (currentRow === i) {
             for (var j = 0; j < winCheckArray.length; j++) {
-                if ($(x).hasClass('col' + [j].toString())) {
+                var currentCol = parseInt($(elementClicked).attr('col'));
+                if (currentCol === j) {
                     winCheckArray[i][j] = currentPlayer;
                 }
             }
@@ -106,10 +113,10 @@ function createGameBoard(){
     var boardSize = $('.gameType:checked').val();
     for (var i = 0; i < boardSize; i++) {
         for (var j = 0; j < boardSize; j++) {
-            boardPiece = $('<div>').addClass('gameCells' + ' ' + 'row' + [i].toString() + ' ' + 'col' + [j].toString()).css({
+            boardPiece = $('<div>').addClass('gameCells').css({
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
-            });
+            }).attr({row:[i], col:[j]});
             $('#gameContainer').append(boardPiece);
         }
     }
@@ -117,3 +124,19 @@ function createGameBoard(){
     resetGame();
 }
 
+function boardUpdated(fbObjectData){//firebase object data
+    var valueOfCell = fbObjectData.data;
+    console.log(valueOfCell);
+    for(var i = 0; i < valueOfCell.length; i++){
+        for(var j = 0; j < valueOfCell[i].length; j++){
+            $('.gameCells.row'+i+'.col,'+j).text(players[valueOfCell[i][j]].symbol);
+        }
+    }
+}
+function saveData(){
+    console.log('saving');
+    tttModel.saveState({
+        gameState: winCheckArray,
+        currentPlayer: players.symbol
+    });
+}
