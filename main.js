@@ -18,27 +18,27 @@ var players = [
         }
     }
 ];
-
 //Possible winning combinations
 // [0,0,0] [0, , ] [ ,0, ] [ , ,0] [ , , ] [ , , ] [0, , ] [ , ,0]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [0,0,0] [ , , ] [ ,0, ] [ ,0, ]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [ , , ] [0,0,0] [ , ,0] [0, , ]
-
 var winCheckArray = [
     [],
     [],
     []
 ];
-
 var currentPlayer = 1;
+//**********************************************************************************************************************
 $(document).ready(function() {
     applyClickHandlers();
+    createGameBoard();
 });
-
+//**********************************************************************************************************************
 function applyClickHandlers(){
     $('.gameCells').click(cellClickHandler);
     $('#reset').click(resetGame);
 }
+//**********************************************************************************************************************
 function cellClickHandler(){
     if (canIClick === true) {
         if ($(this).text() === '') {
@@ -84,12 +84,24 @@ function checkIfPlayerHasWon(y){
         }
     }
 }
+//**********************************************************************************************************************
 function resetGame(){
     $('.gameCells').text('');
+    currentPlayer =1;
     canIClick = true;
     winCheckArray = [
         [],
         [],
         []
     ]
+}
+//**********************************************************************************************************************
+function createGameBoard(){
+    var boardPiece;
+    for (var i=1; i<4; i++){
+        for (var j=1; j<4; j++){
+            boardPiece = $('<div>').addClass('gameCells' + ' ' + 'row' + [i].toString() + ' ' + 'col' + [j].toString());
+            $('#gameContainer').append(boardPiece);
+        }
+    }
 }
