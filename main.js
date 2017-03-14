@@ -163,15 +163,11 @@ function createGameBoard(){
 }
 //**********************************************************************************************************************
 function boardUpdated(){//firebase object data
-    var arrayOfData = winCheckArray;
-    console.log('current board status is ', arrayOfData);
-    console.log(winCheckArray);
+    console.log('current board status is ', winCheckArray[0][0]);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
-            // $(cellClicked).text(players[winCheckArray[i][j]].symbol);
             if(winCheckArray[i][j] === 0){
             }
-
         }
     }
 }
