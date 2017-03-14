@@ -44,8 +44,8 @@ function cellClickHandler(){
             changePlayer();
             cellShowSymbol(this);
             pushToWinArray(this);
+            saveData();//comment out when testing locally (firebase)
         }
-        saveData();//comment out when testing locally (firebase)
         boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
 
