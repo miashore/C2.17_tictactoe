@@ -1,4 +1,4 @@
-var counter = 0;
+
 var canIClick = true;
 var players = [
     {
