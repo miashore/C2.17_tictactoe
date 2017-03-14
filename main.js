@@ -3,7 +3,7 @@ var canIClick = true;
 var players = [
     {
         symbol:'+',
-        name:'dude',
+        name:'Ninja',
         onBecomeCurrentPlayer: function(){
             $('#playerOne').removeClass('selected');
             $('#playerTwo').addClass('selected');
@@ -11,7 +11,7 @@ var players = [
     },
     {
         symbol: 'O',
-        name:'dudette',
+        name:'Monk',
         onBecomeCurrentPlayer: function(){
             $('#playerTwo').removeClass('selected');
             $('#playerOne').addClass('selected');
@@ -22,11 +22,7 @@ var players = [
 // [0,0,0] [0, , ] [ ,0, ] [ , ,0] [ , , ] [ , , ] [0, , ] [ , ,0]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [0,0,0] [ , , ] [ ,0, ] [ ,0, ]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [ , , ] [0,0,0] [ , ,0] [0, , ]
-var winCheckArray = [
-    [],
-    [],
-    []
-];
+var winCheckArray;
 var currentPlayer = 1;
 var tttModel;
 var firebaseObject = {
@@ -65,6 +61,17 @@ function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
 //**********************************************************************************************************************
+function defineWinCheckArray(){
+    if($('.gameType:checked').val()==4){
+        winCheckArray = [[],[],[],[]];
+    }
+    else if($('.gameType:checked').val()==5){
+        winCheckArray = [[],[],[],[],[]];
+    }
+    else {
+        winCheckArray = [[],[],[]];
+    }
+}
 function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
         var currentRow = parseInt($(elementClicked).attr('row'));
@@ -89,6 +96,36 @@ function checkIfPlayerHasWon(y){
                     || winCheckArray[i][j + 2] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j] === y) {
                     setTimeout(function () {
                         alert(players[currentPlayer].symbol + ' has won')
+                    }, 400);
+                    canIClick = false;
+                }
+            }
+        }
+    }
+    else if($('.gameType:checked').val() == 4) {
+        for (var i = 0; i < winCheckArray.length; i++) {
+            for (var j = 0; j < winCheckArray[i].length; j++) {
+                if (winCheckArray[i][j] === y && winCheckArray[i][j + 1] === y && winCheckArray[i][j + 2] === y && winCheckArray[i][j + 3] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j] === y && winCheckArray[i + 2][j] === y && winCheckArray[i + 3][j] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j + 2] === y && winCheckArray[i + 3][j + 3] === y
+                    || winCheckArray[i][j + 3] === y && winCheckArray[i + 1][j + 2] === y && winCheckArray[i + 2][j+1] === y && winCheckArray[i + 3][j] === y) {
+                    setTimeout(function () {
+                        alert(players[currentPlayer].symbol + ' has won')
+                    }, 400);
+                    canIClick = false;
+                }
+            }
+        }
+    }
+    else {
+        for (var i = 0; i < winCheckArray.length; i++) {
+            for (var j = 0; j < winCheckArray[i].length; j++) {
+                if (winCheckArray[i][j] === y && winCheckArray[i][j + 1] === y && winCheckArray[i][j + 2] === y && winCheckArray[i][j + 3] === y && winCheckArray[i][j + 4] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j] === y && winCheckArray[i + 2][j] === y && winCheckArray[i + 3][j] === y && winCheckArray[i + 4][j] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j + 2] === y && winCheckArray[i + 3][j + 3] === y && winCheckArray[i + 4][j + 4] === y
+                    ||winCheckArray[i][j + 4] === y && winCheckArray[i + 1][j + 3] === y && winCheckArray[i + 2][j+2] === y && winCheckArray[i + 3][j+1] === y && winCheckArray[i + 4][j] === y) {
+                    setTimeout(function () {
+                        alert(players[currentPlayer].name + ' has won')
                     }, 400);
                     canIClick = false;
                 }
@@ -123,6 +160,7 @@ function createGameBoard(){
     }
     applyClickHandlers();
     resetGame();
+    defineWinCheckArray();
 }
 
 function boardUpdated(fbObjectData){//firebase object data
