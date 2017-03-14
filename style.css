@@ -1,9 +1,31 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     margin: 0;
+    font-family: 'Ravi Prakash', cursive;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background: #000000;
+    background: -moz-linear-gradient(-45deg, #000000 55%, #75002e 100%);
+    background: -webkit-linear-gradient(-45deg, #000000 55%, #75002e 100%);
+    background: linear-gradient(135deg, #000000 55%, #75002e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#75002e', GradientType=1);
+    color: white;
 }
 
 h1 {
     text-align: center;
+    color: white;
+    font-size: 5vw;
+}
+
+#nameDisplay #messageDisplay {
+    display: inline;
 }
 
 #gameContainer {
@@ -23,6 +45,13 @@ h1 {
     box-sizing: border-box;
 }
 
+#sidebarContainer {
+    left: 2%;
+    position: absolute;
+    text-align: center;
+    font-size: 2.5vw;
+}
+
 #userContainer {
     height: 18vh;
     width: 51vh;
@@ -35,14 +64,14 @@ h1 {
     height: 100%;
     border: 1px solid black;
     text-align: center;
-    font-size: 2vw;
+    font-size: 3vw;
     box-sizing: border-box;
     float: left;
-    background-color: red;
+    background-color: grey;
 }
 
 div .selected {
-    background-color: green;
+    background-color: red;
 }
 
 #radioButtonContainer {
@@ -52,14 +81,33 @@ div .selected {
 
 #reset, #newGame {
     margin: 10px auto;
-    display: inline-block;
+    display: block;
+    padding: 5px;
+    border-radius: 10%;
 }
 
 .gameType {
     display: block;
 }
-
-label {
+input[type=radio] {
+    /*float: left;*/
     display: inline;
+    clear: none;
+}
+label {
+    display: block;
+    clear: none;
 }
 
+button[type=button] {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 15px;
+    background: #d10000;
+    text-decoration: none;
+}
+
+button[type=button]:hover {
+    background: #939799;
+    text-decoration: none;
+}
