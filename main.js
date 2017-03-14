@@ -30,8 +30,8 @@ var winCheckArray = [
 var currentPlayer = 1;
 var tttModel;
 var firebaseObject = {
-    gameState: winCheckArray,
-    currentPlayer: players.symbol
+    gameState: winCheckArray
+    //currentPlayer: players.symbol
 };
 //**********************************************************************************************************************
 $(document).ready(function() {
@@ -53,7 +53,8 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
-        winCheckArray = firebaseObject.gameState;
+        //saveData();//comment out when testing locally (firebase)
+        boardUpdated();
     }
 }
 function changePlayer(){
@@ -115,7 +116,6 @@ function createGameBoard(){
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
             });
-            winCheckArray[i][j] = ''; //initializes array values so null isn't sent to firebase
             $('#gameContainer').append(boardPiece);
         }
     }
@@ -124,18 +124,16 @@ function createGameBoard(){
 }
 //**
 function boardUpdated(fbObjectData){//firebase object data
-    var valueOfCell = fbObjectData.data;
-    console.log(valueOfCell);
-    for(var i = 0; i < valueOfCell.length; i++){
-        for(var j = 0; j < valueOfCell[i].length; j++){
-            $('.gameCells.row'+i+'.col,'+j).text(players[valueOfCell[i][j]].symbol);
+    //var arrayOfData = fbObjectData.data;
+    var arrayOfData = winCheckArray;
+    console.log(arrayOfData);
+    for(var i = 0; i < arrayOfData.length-1; i++){
+        for(var j = 0; j < arrayOfData[i].length-1; j++){
+            $('.gameCells.row'+i+'.col,'+j).text(players[arrayOfData[i][j]].symbol);
         }
     }
 }
 function saveData(){
     console.log('saving');
-    tttModel.saveState({
-        gameState: winCheckArray,
-        currentPlayer: players.symbol
-    });
+    tttModel.saveState(firebaseObject);
 }
