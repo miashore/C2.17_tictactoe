@@ -105,7 +105,9 @@ function createGameBoard(){
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
             });
+            winCheckArray[i][j] = "";
             $('#gameContainer').append(boardPiece);
         }
     }
 }
+
