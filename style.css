@@ -25,15 +25,11 @@ h1 {
     box-sizing: border-box;
 }
 
-/*#userContainer {*/
-    /*height: 18vh;*/
-    /*width: 51vh;*/
-    /*!*background-color: black;*!*/
-    /*margin: 30px auto 0 auto;*/
-/*}*/
-
-#playerOne {
-
+#userContainer {
+    height: 18vh;
+    width: 51vh;
+    /*background-color: black;*/
+    margin: 30px auto 0 auto;
 }
 
 .players {
