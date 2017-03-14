@@ -45,7 +45,7 @@ function cellClickHandler(){
             cellShowSymbol(this);
             pushToWinArray(this);
         }
-        // saveData();//comment out when testing locally (firebase)
+        saveData();//comment out when testing locally (firebase)
         // boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
 
@@ -162,13 +162,16 @@ function createGameBoard(){
     defineWinCheckArray();
 }
 //**********************************************************************************************************************
-function boardUpdated(cellClicked){//firebase object data
-    // var arrayOfData = cellClicked.data;
-    console.log('current board status is ', winCheckArray);
+function boardUpdated(){//firebase object data
+    var arrayOfData = winCheckArray;
+    console.log('current board status is ', arrayOfData);
     console.log(winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
-            $(cellClicked).text(players[winCheckArray[i][j]].symbol);
+            // $(cellClicked).text(players[winCheckArray[i][j]].symbol);
+            if(winCheckArray[i][j] === 0){
+            }
+
         }
     }
 }
