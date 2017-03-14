@@ -26,6 +26,7 @@ function GenericFBModel(gameName, changeCallbackFunction) {
         if (currentData != this.lastSend) {
             this.lastSend = JSON.stringify(currentData);
             this.callback.call(null, data.val());
+            this.lastSend = JSON.stringify(currentData);
         }
     }
     this.initialize();
