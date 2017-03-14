@@ -68,6 +68,13 @@ h1 {
     background-color: grey;
 }
 
+#playerOne {
+    background-image: url(ninja_icon.png);
+    background-image: url(ninja_icon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 div .selected {
     background-color: red;
 }

@@ -2,7 +2,7 @@
 var canIClick = true;
 var players = [
     {
-        symbol:'X',
+        symbol:'+',
         name:'dude',
         onBecomeCurrentPlayer: function(){
             $('#playerOne').removeClass('selected');
@@ -110,7 +110,6 @@ function createGameBoard(){
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
             });
-            winCheckArray[i][j] = "";
             $('#gameContainer').append(boardPiece);
         }
     }
