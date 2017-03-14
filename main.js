@@ -53,8 +53,8 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
-        //saveData();//comment out when testing locally (firebase)
-        boardUpdated();
+        saveData();//comment out when testing locally (firebase)
+        boardUpdated(this);
     }
 }
 function changePlayer(){
@@ -77,6 +77,10 @@ function pushToWinArray(elementClicked) {
             }
         }
     }
+    firebaseObject = {
+        gameState: winCheckArray
+        //currentPlayer: players.symbol
+    };
 }
 //**********************************************************************************************************************
 function checkIfPlayerHasWon(y){
@@ -105,7 +109,7 @@ function resetGame(){
         [],
         [],
         []
-    ]
+    ];
 }
 //**********************************************************************************************************************
 function createGameBoard(){
@@ -125,13 +129,13 @@ function createGameBoard(){
     resetGame();
 }
 
-function boardUpdated(fbObjectData){//firebase object data
-    //var arrayOfData = fbObjectData.data;
-    var arrayOfData = winCheckArray;
-    console.log(arrayOfData);
-    for(var i = 0; i < arrayOfData.length-1; i++){
-        for(var j = 0; j < arrayOfData[i].length-1; j++){
-            $('.gameCells.row'+i+'.col,'+j).text(players[arrayOfData[i][j]].symbol);
+function boardUpdated(cellClicked){//firebase object data
+    //var arrayOfData = cellClicked.data;
+    console.log('cellClicked is ', cellClicked);
+    console.log(winCheckArray);
+    for(var i = 0; i < winCheckArray.length; i++){
+        for(var j = 0; j < winCheckArray[i].length; j++){
+            $(cellClicked).text(players[winCheckArray[i][j]].symbol);
         }
     }
 }
