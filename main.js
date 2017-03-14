@@ -25,10 +25,7 @@ var players = [
 var winCheckArray;
 var currentPlayer = 1;
 var tttModel;
-var firebaseObject = {
-    gameState: winCheckArray
-    //currentPlayer: players.symbol
-};
+var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
     tttModel = new GenericFBModel('gamekey',boardUpdated);
@@ -85,8 +82,8 @@ function pushToWinArray(elementClicked) {
         }
     }
     firebaseObject = {
-        gameState: winCheckArray
-        //currentPlayer: players.symbol
+        gameState: winCheckArray,
+        currentPlayer: players[currentPlayer].name
     };
 }
 //**********************************************************************************************************************
@@ -162,9 +159,7 @@ function createGameBoard(){
     defineWinCheckArray();
 }
 
-function boardUpdated(cellClicked){//firebase object data
-    //var arrayOfData = cellClicked.data;
-    console.log('cellClicked is ', cellClicked);
+function boardUpdated(){//firebase object data
     console.log(winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
