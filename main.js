@@ -49,7 +49,7 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
-        saveData();//comment out when testing locally (firebase)
+        //saveData();//comment out when testing locally (firebase)
         boardUpdated(this);
     }
 }
@@ -176,4 +176,5 @@ function saveData(){
     console.log('saving');
     tttModel.saveState(firebaseObject);
 }
+
 
