@@ -46,7 +46,7 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         saveData();//comment out when testing locally (firebase)
-        // boardUpdated(this);
+        boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
 
 
