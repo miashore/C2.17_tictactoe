@@ -29,13 +29,14 @@ var winCheckArray = [
 ];
 //**********************************************************************************************************************
 $(document).ready(function() {
-    createGameBoard();
     applyClickHandlers();
 });
 //**********************************************************************************************************************
 function applyClickHandlers(){
+    $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
     $('#reset').click(resetGame);
+
 }
 //**********************************************************************************************************************
 function cellClickHandler(){
@@ -96,6 +97,7 @@ function resetGame(){
 }
 //**********************************************************************************************************************
 function createGameBoard(){
+    $("#gameContainer").empty();
     var boardPiece;
     var boardSize = $('.gameType:checked').val();
     for (var i = 0; i < boardSize; i++) {
