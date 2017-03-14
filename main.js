@@ -56,38 +56,15 @@ function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
 //**********************************************************************************************************************
-function pushToWinArray(x){
-    if($(x).hasClass('row1')) {
-        if($(x).hasClass('col1')){
-            winCheckArray[0][0] = currentPlayer;
-        }
-        else if($(x).hasClass('col2')){
-            winCheckArray[0][1] = currentPlayer;
-        }
-        else if($(x).hasClass('col3')){
-            winCheckArray[0][2] = currentPlayer;
-        }
-    }
-    else if($(x).hasClass('row2')){
-        if($(x).hasClass('col1')){
-            winCheckArray[1][0] = currentPlayer;
-        }
-        else if($(x).hasClass('col2')){
-            winCheckArray[1][1] = currentPlayer;
-        }
-        else if($(x).hasClass('col3')){
-            winCheckArray[1][2] = currentPlayer;
-        }
-    }
-    else if($(x).hasClass('row3')){
-        if($(x).hasClass('col1')){
-            winCheckArray[2][0] = currentPlayer;
-        }
-        else if($(x).hasClass('col2')){
-            winCheckArray[2][1] = currentPlayer;
-        }
-        else if($(x).hasClass('col3')){
-            winCheckArray[2][2] = currentPlayer;
+function pushToWinArray(x) {
+
+    for (var i = 0; i < winCheckArray.length; i++) {
+        if ($(x).hasClass('row' + [i+1].toString())) {
+            for (var j = 0; j < winCheckArray.length; j++) {
+                if ($(x).hasClass('col' + [j+1].toString())) {
+                    winCheckArray[i][j] = currentPlayer;
+                }
+            }
         }
     }
 }
@@ -102,7 +79,15 @@ function checkIfPlayerHasWon(y){
             || winCheckArray[i][j] === y && winCheckArray[i+1][j] === y && winCheckArray[i+2][j] === y
             || winCheckArray[i][j] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j+2] === y
             || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y)
-                alert(players[currentPlayer].symbol + ' has won');
+                setTimeout(400,alert(players[currentPlayer].symbol + ' has won'));
         }
     }
+}
+function resetGame(){
+    $('.gameCells').text('');
+    winCheckArray = [
+        [],
+        [],
+        []
+    ]
 }
