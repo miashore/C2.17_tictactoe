@@ -1,4 +1,5 @@
 var counter = 0;
+var canIClick = true;
 var players = [
     {
         symbol:'X',
@@ -32,7 +33,6 @@ var winCheckArray = [
 var currentPlayer = 1;
 $(document).ready(function() {
     applyClickHandlers();
-
 });
 
 function applyClickHandlers(){
@@ -40,12 +40,14 @@ function applyClickHandlers(){
     $('#reset').click(resetGame);
 }
 function cellClickHandler(){
-    if($(this).text()==='') {
-        changePlayer();
-        cellShowSymbol(this);
-        pushToWinArray(this);
+    if (canIClick === true) {
+        if ($(this).text() === '') {
+            changePlayer();
+            cellShowSymbol(this);
+            pushToWinArray(this);
+        }
+        checkIfPlayerHasWon(currentPlayer);
     }
-    checkIfPlayerHasWon(currentPlayer);
 }
 function changePlayer(){
         currentPlayer = 1-currentPlayer;
@@ -57,7 +59,6 @@ function cellShowSymbol(cellThatWasClicked){
 }
 //**********************************************************************************************************************
 function pushToWinArray(x) {
-
     for (var i = 0; i < winCheckArray.length; i++) {
         if ($(x).hasClass('row' + [i+1].toString())) {
             for (var j = 0; j < winCheckArray.length; j++) {
@@ -72,19 +73,20 @@ function pushToWinArray(x) {
 function checkIfPlayerHasWon(y){
     for (var i=0; i<winCheckArray.length;i++){
         for(var j=0; j<winCheckArray[i].length;j++){
-            if(j+2 === undefined){
-                return;
-            }
             if(winCheckArray[i][j] === y && winCheckArray[i][j+1] === y && winCheckArray[i][j+2] === y
             || winCheckArray[i][j] === y && winCheckArray[i+1][j] === y && winCheckArray[i+2][j] === y
             || winCheckArray[i][j] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j+2] === y
-            || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y)
-                setTimeout(400,alert(players[currentPlayer].symbol + ' has won'));
+            || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y) {
+                setTimeout(function () {
+                    alert(players[currentPlayer].symbol + ' has won')}, 400);
+                canIClick=false;
+            }
         }
     }
 }
 function resetGame(){
     $('.gameCells').text('');
+    canIClick = true;
     winCheckArray = [
         [],
         [],
