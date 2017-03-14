@@ -50,10 +50,12 @@ div .selected {
     margin: 0 auto;
 }
 
-button {
+#reset {
     margin: 10px auto;
+    display: block;
 }
 
 .gameType {
-    display: inline;
+    display: block;
 }
+

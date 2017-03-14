@@ -108,6 +108,3 @@ function checkIfPlayerHasWon(y){
         }
     }
 }
-
-
->>>>>>> fad75fdb6f7af6e6331f134ce84c0b4e4e75c092

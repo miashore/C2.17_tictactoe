@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Shaolin Busters: Tic Tac Toe</h1>
+<h1>Shaolin Busters: Tic Tac Toe</h1>
+<div id="main-container">
     <div id="gameContainer">
         <div class="gameCells col1 row1"></div>
         <div class="gameCells col2 row1"></div>
@@ -20,12 +21,14 @@
     </div>
     <div id="userContainer">
         <div id="playerOne" class="players selected" value="0">Player 1</div>
-        <div id="playerTwo" class="players"  value="1">Player 2</div>
+        <div id="playerTwo" class="players" value="1">Player 2</div>
     </div>
     <div id="buttonRadioContainer">
         <input type="radio" class="gameType"><label>3x3</label>
+        <input type="radio" class="gameType"><label>4x4</label>
         <input type="radio" class="gameType"><label>5x5</label>
         <button type="button" id="reset">Reset Game</button>
     </div>
+</div>
 </body>
 </html>
