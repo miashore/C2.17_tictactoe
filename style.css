@@ -47,14 +47,14 @@ div .selected {
     background-color: green;
 }
 
-#buttonRadioContainer {
+#radioButtonContainer {
     width: 8vw;
     margin: 10px;
 }
 
-#reset {
+#reset, #newGame {
     margin: 10px auto;
-    display: block;
+    display: inline-block;
 }
 
 .gameType {
