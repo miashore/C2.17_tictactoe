@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="genericFirebaseBackend.js"></script>
     <script src="firebaseConfig.js"></script>
     <script src="main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Shaolin Busters: Tic Tac Toe</h1>
-    <div id="main-container">
-        <div id="gameContainer">
-        </div>
-        <div id="userContainer">
-            <div id="playerOne" class="players selected" value="0">Player 1</div>
-            <div id="playerTwo" class="players"  value="1">Player 2</div>
-        </div>
-        <div id="radioButtonContainer">
-            <div id="gameSelector">
-                <h3>Game Selection</h3>
-                <input type="radio" name='gameSelect' class="gameType" checked="checked" value='3'><label>3x3</label>
-                <input type="radio" name='gameSelect' class="gameType" value="4"><label>4x4</label>
-                <input type="radio" name='gameSelect' class="gameType" value="5"><label>5x5</label>
-            </div>
-            <button type="button" id="newGame">New Game</button>
-            <button type="button" id="reset">Reset Game</button>
-        </div>
+<h1>Shaolin Busters: Tic Tac Toe</h1>
+<div id="main-container">
+    <div id="gameContainer">
     </div>
+    <div id="userContainer">
+        <div id="playerOne" class="players selected" value="0">+</div>
+        <div id="playerTwo" class="players" value="1">O</div>
+    </div>
+    <div id="sidebarContainer">
+        <div id="gameSelector">
+            <h3>Game Selection</h3>
+            <label for="3"><input type="radio" name='gameSelect' class="gameType" value="3" id="3" checked="checked">3x3</label>
+            <label for="4"><input type="radio" name='gameSelect' class="gameType" value="4" id="4">4x4</label>
+            <label for="5"><input type="radio" name='gameSelect' class="gameType" value="5" id="5">5x5</label>
+        </div>
+        <button type="button" id="newGame">New Game</button>
+        <button type="button" id="reset">Reset Game</button>
+    </div>
+</div>
 </body>
+
 </html>
