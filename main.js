@@ -79,10 +79,15 @@ function checkIfPlayerHasWon(y){
             || winCheckArray[i][j] === y && winCheckArray[i+1][j] === y && winCheckArray[i+2][j] === y
             || winCheckArray[i][j] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j+2] === y
             || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y)
-                alert(players[currentPlayer].symbol + ' has won');
+                setTimeout(400,alert(players[currentPlayer].symbol + ' has won'));
         }
     }
 }
 function resetGame(){
-
+    $('.gameCells').text('');
+    winCheckArray = [
+        [],
+        [],
+        []
+    ]
 }
