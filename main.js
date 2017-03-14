@@ -53,7 +53,7 @@ function cellClickHandler(){
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
-        winCheckArray = firebaseObject.gameState;
+        // winCheckArray = firebaseObject.gameState;
     }
 }
 function changePlayer(){
@@ -64,11 +64,13 @@ function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
 //**********************************************************************************************************************
-function pushToWinArray(x) {
+function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
-        if ($(x).hasClass('row' + [i].toString())) {
+        var currentRow = parseInt($(elementClicked).attr('row'));
+        if (currentRow === i) {
             for (var j = 0; j < winCheckArray.length; j++) {
-                if ($(x).hasClass('col' + [j].toString())) {
+                var currentCol = parseInt($(elementClicked).attr('col'));
+                if (currentCol === j) {
                     winCheckArray[i][j] = currentPlayer;
                 }
             }
@@ -111,11 +113,10 @@ function createGameBoard(){
     var boardSize = $('.gameType:checked').val();
     for (var i = 0; i < boardSize; i++) {
         for (var j = 0; j < boardSize; j++) {
-            boardPiece = $('<div>').addClass('gameCells' + ' ' + 'row' + [i].toString() + ' ' + 'col' + [j].toString()).css({
+            boardPiece = $('<div>').addClass('gameCells').css({
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
-            });
-            winCheckArray[i][j] = ''; //initializes array values so null isn't sent to firebase
+            }).attr({row:[i], col:[j]});
             $('#gameContainer').append(boardPiece);
         }
     }
