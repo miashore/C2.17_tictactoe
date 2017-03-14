@@ -163,7 +163,6 @@ function createGameBoard(){
 }
 //**********************************************************************************************************************
 function boardUpdated(cellClicked){//firebase object data
-    var arrayOfData = cellClicked.data;
     console.log('current board status is ', winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
