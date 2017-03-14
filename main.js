@@ -1,4 +1,4 @@
-var counter = 0;
+
 var canIClick = true;
 var players = [
     {
@@ -60,9 +60,9 @@ function cellShowSymbol(cellThatWasClicked){
 //**********************************************************************************************************************
 function pushToWinArray(x) {
     for (var i = 0; i < winCheckArray.length; i++) {
-        if ($(x).hasClass('row' + [i+1].toString())) {
+        if ($(x).hasClass('row' + [i].toString())) {
             for (var j = 0; j < winCheckArray.length; j++) {
-                if ($(x).hasClass('col' + [j+1].toString())) {
+                if ($(x).hasClass('col' + [j].toString())) {
                     winCheckArray[i][j] = currentPlayer;
                 }
             }
@@ -98,9 +98,13 @@ function resetGame(){
 //**********************************************************************************************************************
 function createGameBoard(){
     var boardPiece;
-    for (var i=1; i<4; i++){
-        for (var j=1; j<4; j++){
-            boardPiece = $('<div>').addClass('gameCells' + ' ' + 'row' + [i].toString() + ' ' + 'col' + [j].toString());
+    var boardSize = $('.gameType:checked').val();
+    for (var i = 0; i < boardSize; i++) {
+        for (var j = 0; j < boardSize; j++) {
+            boardPiece = $('<div>').addClass('gameCells' + ' ' + 'row' + [i].toString() + ' ' + 'col' + [j].toString()).css({
+                'width': (100/boardSize)+'%',
+                'height': (100/boardSize)+'%'
+            });
             $('#gameContainer').append(boardPiece);
         }
     }

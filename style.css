@@ -16,8 +16,6 @@ h1 {
 }
 
 .gameCells {
-    width: 33.33%;
-    height: 33.33%;
     border: 1px solid black;
     text-align: center;
     font-size: 2em;
