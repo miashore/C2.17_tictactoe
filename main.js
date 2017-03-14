@@ -162,8 +162,8 @@ function createGameBoard(){
     defineWinCheckArray();
 }
 //**********************************************************************************************************************
-function boardUpdated(){//firebase object data
-    console.log('current board status is ', winCheckArray[0][0]);
+function boardUpdated(cellClicked){//firebase object data
+    console.log('current board status is ', cellClicked);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
             if(winCheckArray[i][j] === 0){
