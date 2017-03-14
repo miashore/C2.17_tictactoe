@@ -59,7 +59,6 @@ function cellClickHandler(){
 function changePlayer(){
         currentPlayer = 1-currentPlayer;
         players[currentPlayer].onBecomeCurrentPlayer();
-
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
@@ -113,6 +112,7 @@ function createGameBoard(){
                 'width': (100/boardSize)+'%',
                 'height': (100/boardSize)+'%'
             });
+            winCheckArray[i][j] = ''; //initializes array values so null isn't sent to firebase
             $('#gameContainer').append(boardPiece);
         }
     }
