@@ -55,8 +55,6 @@ function changePlayer(){
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
 }
-<<<<<<< HEAD
-=======
 //**********************************************************************************************************************
 function pushToWinArray(x){
     if($(x).hasClass('row1')) {
