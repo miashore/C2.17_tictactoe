@@ -9,8 +9,10 @@ h1 {
 #gameContainer {
     width: 60vw;
     height: 60vh;
-    margin: 30px auto 0 auto;
+    /* margin: 30px auto 0 auto; */
     background-color: lightblue;
+    float: right;
+    margin-right: 20vw;
 }
 
 .gameCells {
@@ -45,15 +47,21 @@ div .selected {
     background-color: green;
 }
 
-#buttonContainer {
+#buttonRadioContainer {
     width: 8vw;
-    margin: 0 auto;
+    margin: 10px;
 }
 
-button {
+#reset {
     margin: 10px auto;
+    display: block;
 }
 
 .gameType {
+    display: block;
+}
+
+label {
     display: inline;
 }
+
