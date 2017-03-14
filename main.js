@@ -25,10 +25,7 @@ var players = [
 var winCheckArray;
 var currentPlayer = 1;
 var tttModel;
-var firebaseObject = {
-    gameState: winCheckArray
-    //currentPlayer: players.symbol
-};
+var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
     tttModel = new GenericFBModel('gamekey',boardUpdated);
@@ -48,9 +45,11 @@ function cellClickHandler(){
             cellShowSymbol(this);
             pushToWinArray(this);
         }
+        // saveData();//comment out when testing locally (firebase)
+        // boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
-        //saveData();//comment out when testing locally (firebase)
-        boardUpdated(this);
+
+
     }
 }
 function changePlayer(){
@@ -72,6 +71,7 @@ function defineWinCheckArray(){
         winCheckArray = [[],[],[]];
     }
 }
+//**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
         var currentRow = parseInt($(elementClicked).attr('row'));
@@ -85,8 +85,8 @@ function pushToWinArray(elementClicked) {
         }
     }
     firebaseObject = {
-        gameState: winCheckArray
-        //currentPlayer: players.symbol
+        gameState: winCheckArray,
+        currentPlayer: players[currentPlayer].name
     };
 }
 //**********************************************************************************************************************
@@ -161,10 +161,10 @@ function createGameBoard(){
     resetGame();
     defineWinCheckArray();
 }
-
+//**********************************************************************************************************************
 function boardUpdated(cellClicked){//firebase object data
-    //var arrayOfData = cellClicked.data;
-    console.log('cellClicked is ', cellClicked);
+    var arrayOfData = cellClicked.data;
+    console.log('current board status is ', winCheckArray);
     console.log(winCheckArray);
     for(var i = 0; i < winCheckArray.length; i++){
         for(var j = 0; j < winCheckArray[i].length; j++){
@@ -172,6 +172,7 @@ function boardUpdated(cellClicked){//firebase object data
         }
     }
 }
+//**********************************************************************************************************************
 function saveData(){
     console.log('saving');
     tttModel.saveState(firebaseObject);
