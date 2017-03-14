@@ -177,5 +177,3 @@ function saveData(){
     console.log('saving');
     tttModel.saveState(firebaseObject);
 }
-
-
