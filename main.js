@@ -77,15 +77,18 @@ function pushToWinArray(x) {
 }
 //**********************************************************************************************************************
 function checkIfPlayerHasWon(y){
-    for (var i=0; i<winCheckArray.length;i++){
-        for(var j=0; j<winCheckArray[i].length;j++){
-            if(winCheckArray[i][j] === y && winCheckArray[i][j+1] === y && winCheckArray[i][j+2] === y
-            || winCheckArray[i][j] === y && winCheckArray[i+1][j] === y && winCheckArray[i+2][j] === y
-            || winCheckArray[i][j] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j+2] === y
-            || winCheckArray[i][j+2] === y && winCheckArray[i+1][j+1] === y && winCheckArray[i+2][j] === y) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].symbol + ' has won')}, 400);
-                canIClick=false;
+    if($('.gameType:checked').val() == 3) {
+        for (var i = 0; i < winCheckArray.length; i++) {
+            for (var j = 0; j < winCheckArray[i].length; j++) {
+                if (winCheckArray[i][j] === y && winCheckArray[i][j + 1] === y && winCheckArray[i][j + 2] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j] === y && winCheckArray[i + 2][j] === y
+                    || winCheckArray[i][j] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j + 2] === y
+                    || winCheckArray[i][j + 2] === y && winCheckArray[i + 1][j + 1] === y && winCheckArray[i + 2][j] === y) {
+                    setTimeout(function () {
+                        alert(players[currentPlayer].symbol + ' has won')
+                    }, 400);
+                    canIClick = false;
+                }
             }
         }
     }
@@ -116,6 +119,8 @@ function createGameBoard(){
             $('#gameContainer').append(boardPiece);
         }
     }
+    applyClickHandlers();
+    resetGame();
 }
 //**
 function boardUpdated(fbObjectData){//firebase object data
