@@ -168,7 +168,6 @@ function boardUpdated(cellClicked){//firebase object data
         for(var j = 0; j < winCheckArray[i].length; j++){
             // if(winCheckArray[i][j] === 0){
             // }
-            console.log(cellClicked, i, j);
             $(cellClicked).text(players[currentPlayer].symbol);
         }
     }
