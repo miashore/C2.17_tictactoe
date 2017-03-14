@@ -30,8 +30,8 @@ var winCheckArray = [
 var currentPlayer = 1;
 //**********************************************************************************************************************
 $(document).ready(function() {
-    applyClickHandlers();
     createGameBoard();
+    applyClickHandlers();
 });
 //**********************************************************************************************************************
 function applyClickHandlers(){
