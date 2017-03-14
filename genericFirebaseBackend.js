@@ -16,7 +16,6 @@ function GenericFBModel(gameName, changeCallbackFunction) {
         this.registerListener();
     }
     this.saveState = function (newState) {
-        this.lastSend = JSON.stringify(newState);
         this.db.database().ref(this.boardName).set(newState);
     }
     this.registerListener = function () {
@@ -26,6 +25,7 @@ function GenericFBModel(gameName, changeCallbackFunction) {
         var currentData = JSON.stringify(data.val());
         if (currentData != this.lastSend) {
             this.callback.call(null, data.val());
+            this.lastSend = JSON.stringify(currentData);
         }
     }
     this.initialize();
