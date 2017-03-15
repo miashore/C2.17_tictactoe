@@ -38,7 +38,6 @@ function cellClickHandler(){
         if ($(this).text() === '') {
             changePlayer();
             cellShowSymbol(this);
-            playSound();
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
@@ -74,6 +73,7 @@ function pushToWinArray(elementClicked) {
 }
 //**********************************************************************************************************************
 function checkIfPlayerHasWon(playerNumber){
+    playSound();
     var uWin = winCheckArray;
     if($('.gameType:checked').val() == 3) {
         for (var i = 0; i < uWin.length; i++) {
