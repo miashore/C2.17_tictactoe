@@ -59,6 +59,7 @@ h1 {
     position: relative;
     font-size: 1.5vw;
     width: 8%;
+    padding-left: 3%;
 }
 
 #userContainer {
@@ -95,10 +96,7 @@ div .selected {
 #gameSelector, h1, p {
     text-shadow: 3px 5px 3px #000000;
 }
-#gameSelector {
-    text-align: center;
-    line-height: 2em;
-}
+
 #radioButtonContainer {
     width: 8vw;
     margin: 10px;
