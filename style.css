@@ -13,12 +13,7 @@ html {
 
 body {
     margin: 0;
-    font-family: NinjaFont;
-    /*background-image: url('shaolinNinja.png');*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*height: 100%;*/
-    /*width: 100%;*/
+    font-family: NinjaFont, 'Ravi Prakash', Helvetica, cursive;
     color: white;
 }
 
@@ -35,7 +30,6 @@ h1 {
 #gameContainer {
     width: 60vw;
     height: 60vh;
-    /* margin: 30px auto 0 auto; */
     background-color: rgba(171,169,171,0.65);
     float: right;
     margin-right: 20vw;
@@ -105,7 +99,6 @@ div .selected {
     display: block;
 }
 input[type=radio] {
-    /*float: left;*/
     display: inline;
     clear: none;
 }
@@ -115,7 +108,7 @@ label {
 }
 
 button[type=button] {
-    font-family: Arial;
+    font-family: Arial, Helvetica, sans-serif;
     color: #ffffff;
     font-size: 15px;
     background: #d10000;

@@ -1,4 +1,3 @@
-
 var canIClick = true;
 var players = [
     {
@@ -153,8 +152,6 @@ function createGameBoard(){
     tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
-
-
 function boardUpdated(fbGameObject){//firebase object data
     if(winCheckArray.length===0){
         return;
