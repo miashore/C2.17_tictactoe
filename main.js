@@ -121,7 +121,7 @@ function resetGame(){
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
-    populateWinCheckArray()
+    populateWinCheckArray();
     saveData();
 }
 function populateWinCheckArray(){
@@ -155,7 +155,7 @@ function createGameBoard(){
 //**********************************************************************************************************************
 function boardUpdated(fbGameObject){//firebase object data
     if(winCheckArray.length===0){
-        return
+        return;
     }
     console.log('current board status is ', fbGameObject);
     for(var i = 0; i < fbGameObject.gameState.length; i++){
