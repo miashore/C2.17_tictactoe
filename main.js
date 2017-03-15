@@ -137,11 +137,11 @@ function resetGame(){
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
-    winCheckArray = [
-        [],
-        [],
-        []
-    ];
+    // winCheckArray = [
+    //     [],
+    //     [],
+    //     []
+    // ];
 }
 //**********************************************************************************************************************
 function createGameBoard(){
@@ -149,6 +149,7 @@ function createGameBoard(){
     var boardPiece;
     var boardSize = $('.gameType:checked').val();
     for (var i = 0; i < boardSize; i++) {
+        winCheckArray[i]=[];
         for (var j = 0; j < boardSize; j++) {
             boardPiece = $('<div>').addClass('gameCells').css({
                 'width': (100/boardSize)+'%',
@@ -164,10 +165,12 @@ function createGameBoard(){
 //**********************************************************************************************************************
 function boardUpdated(cellClicked){//firebase object data
     console.log('current board status is ', cellClicked);
-    // for(var i = 0; i < winCheckArray.length; i++){
-    //     for(var j = 0; j < winCheckArray[i].length; j++){
-            // if(winCheckArray[i][j] === 0){
-            // }
+
+    for(var i = 0; i < winCheckArray.length; i++){
+        for(var j = 0; j < winCheckArray[i].length; j++){
+            if(winCheckArray[i][j] === 0){
+            }
+
             $(cellClicked).text(players[currentPlayer].symbol);
     //     }
     // }
