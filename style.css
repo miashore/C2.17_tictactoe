@@ -96,8 +96,8 @@ div .selected {
     text-shadow: 3px 5px 3px #000000;
 }
 #gameSelector {
-    text-align: center;
-    line-height: 2em;
+    /*text-align: center;*/
+    /*line-height: 2em;*/
 }
 #radioButtonContainer {
     width: 8vw;
