@@ -121,12 +121,7 @@ function resetGame(){
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
-<<<<<<< HEAD
-
-    populateWinCheckArray()
-=======
     populateWinCheckArray();
->>>>>>> c24a55c3cde7f6b78716a8182c83cb87e02e3759
     saveData();
 }
 function populateWinCheckArray(){
