@@ -153,11 +153,12 @@ function createGameBoard(){
     tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
+
+
 function boardUpdated(fbGameObject){//firebase object data
     if(winCheckArray.length===0){
         return;
     }
-    console.log('current board status is ', fbGameObject);
     for(var i = 0; i < fbGameObject.gameState.length; i++){
         for(var j = 0; j < fbGameObject.gameState[i].length; j++){
            // if(newGameState)
@@ -182,6 +183,5 @@ function saveData(){
         gameState: winCheckArray,
         currentPlayer: currentPlayer
     };
-    console.log('saving');
     tttModel.saveState(firebaseObject);
 }
