@@ -22,13 +22,13 @@ var players = [
 // [0,0,0] [0, , ] [ ,0, ] [ , ,0] [ , , ] [ , , ] [0, , ] [ , ,0]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [0,0,0] [ , , ] [ ,0, ] [ ,0, ]
 // [ , , ] [0, , ] [ ,0, ] [ , ,0] [ , , ] [0,0,0] [ , ,0] [0, , ]
-var winCheckArray;
+var winCheckArray=[];
 var currentPlayer = 1;
 var tttModel;
 var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
-    tttModel = new GenericFBModel('gamekey',boardUpdated);
+
     applyClickHandlers();
 });
 //**********************************************************************************************************************
@@ -44,32 +44,19 @@ function cellClickHandler(){
             changePlayer();
             cellShowSymbol(this);
             pushToWinArray(this);
-            saveData();//comment out when testing locally (firebase)
         }
-        boardUpdated(this);
         checkIfPlayerHasWon(currentPlayer);
-
-
     }
 }
 function changePlayer(){
-        currentPlayer = 1-currentPlayer;
-        players[currentPlayer].onBecomeCurrentPlayer();
+    currentPlayer = 1-currentPlayer;
+    updatePlayerVisual();
+}
+function updatePlayerVisual(){
+    players[currentPlayer].onBecomeCurrentPlayer();
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
-}
-//**********************************************************************************************************************
-function defineWinCheckArray(){
-    if($('.gameType:checked').val()==4){
-        winCheckArray = [[],[],[],[]];
-    }
-    else if($('.gameType:checked').val()==5){
-        winCheckArray = [[],[],[],[],[]];
-    }
-    else {
-        winCheckArray = [[],[],[]];
-    }
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
@@ -84,10 +71,7 @@ function pushToWinArray(elementClicked) {
             }
         }
     }
-    firebaseObject = {
-        gameState: winCheckArray,
-        currentPlayer: players[currentPlayer].name
-    };
+    saveData();
 }
 //**********************************************************************************************************************
 function checkIfPlayerHasWon(playerNumber){
@@ -137,14 +121,21 @@ function resetGame(){
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
-    winCheckArray = [
-        [],
-        [],
-        []
-    ];
+    populateWinCheckArray();
+    saveData();
+}
+function populateWinCheckArray(){
+    var boardSize = $('.gameType:checked').val();
+    for (var i = 0; i < boardSize; i++) {
+        winCheckArray[i]=[];
+        for (var j = 0; j < boardSize; j++) {
+            winCheckArray[i][j]='';
+        }
+    }
 }
 //**********************************************************************************************************************
 function createGameBoard(){
+
     $("#gameContainer").empty();
     var boardPiece;
     var boardSize = $('.gameType:checked').val();
@@ -158,22 +149,41 @@ function createGameBoard(){
         }
     }
     applyClickHandlers();
-    resetGame();
-    defineWinCheckArray();
+    populateWinCheckArray();
+    tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
-function boardUpdated(cellClicked){//firebase object data
-    console.log('current board status is ', cellClicked);
-    // for(var i = 0; i < winCheckArray.length; i++){
-    //     for(var j = 0; j < winCheckArray[i].length; j++){
-            // if(winCheckArray[i][j] === 0){
-            // }
-            $(cellClicked).text(players[currentPlayer].symbol);
-    //     }
-    // }
+
+
+function boardUpdated(fbGameObject){//firebase object data
+    if(winCheckArray.length===0){
+        return
+    }
+    console.log('current board status is ', fbGameObject);
+    for(var i = 0; i < fbGameObject.gameState.length; i++){
+        for(var j = 0; j < fbGameObject.gameState[i].length; j++){
+           // if(newGameState)
+            var row = i;
+            var col = j;
+            var playerID = fbGameObject.gameState[i][j];
+            if(playerID!==''){
+                $('.gameCells[row='+row+'][col='+col+']').text(players[playerID].symbol);
+            } else {
+                $('.gameCells[row='+row+'][col='+col+']').text('');
+            }
+        }
+    }
+    currentPlayer = fbGameObject.currentPlayer;
+    winCheckArray = fbGameObject.gameState.slice();
+    updatePlayerVisual();
+    checkIfPlayerHasWon(currentPlayer);
 }
 //**********************************************************************************************************************
 function saveData(){
+    firebaseObject = {
+        gameState: winCheckArray,
+        currentPlayer: currentPlayer
+    };
     console.log('saving');
     tttModel.saveState(firebaseObject);
 }
