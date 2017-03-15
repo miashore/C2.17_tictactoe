@@ -155,7 +155,6 @@ function createGameBoard(){
     tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
-<<<<<<< HEAD
 function boardUpdated(cellClicked){//firebase object data
     console.log('current board status is ', cellClicked);
 
@@ -191,7 +190,7 @@ function boardUpdated(fbGameObject){//firebase object data
     checkIfPlayerHasWon(currentPlayer);
 }
 //**********************************************************************************************************************
-function saveData(){
+function saveData() {
     firebaseObject = {
         gameState: winCheckArray,
         currentPlayer: currentPlayer
