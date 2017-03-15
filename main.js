@@ -159,22 +159,6 @@ function createGameBoard(){
     tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
-<<<<<<< HEAD
-function boardUpdated(cellClicked){//firebase object data
-    console.log('current board status is ', cellClicked);
-
-    for(var i = 0; i < winCheckArray.length; i++){
-        for(var j = 0; j < winCheckArray[i].length; j++){
-            if(winCheckArray[i][j] === 0){
-            }
-
-            $(cellClicked).text(players[currentPlayer].symbol);
-    //     }
-    // }
-=======
-
-
->>>>>>> c24a55c3cde7f6b78716a8182c83cb87e02e3759
 function boardUpdated(fbGameObject){//firebase object data
     if(winCheckArray.length===0){
         return
