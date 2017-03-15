@@ -121,8 +121,12 @@ function resetGame(){
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
+<<<<<<< HEAD
 
     populateWinCheckArray()
+=======
+    populateWinCheckArray();
+>>>>>>> c24a55c3cde7f6b78716a8182c83cb87e02e3759
     saveData();
 }
 function populateWinCheckArray(){
@@ -155,6 +159,7 @@ function createGameBoard(){
     tttModel = new GenericFBModel('gamekey',boardUpdated);
 }
 //**********************************************************************************************************************
+<<<<<<< HEAD
 function boardUpdated(cellClicked){//firebase object data
     console.log('current board status is ', cellClicked);
 
@@ -166,6 +171,10 @@ function boardUpdated(cellClicked){//firebase object data
             $(cellClicked).text(players[currentPlayer].symbol);
     //     }
     // }
+=======
+
+
+>>>>>>> c24a55c3cde7f6b78716a8182c83cb87e02e3759
 function boardUpdated(fbGameObject){//firebase object data
     if(winCheckArray.length===0){
         return
