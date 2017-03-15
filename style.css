@@ -10,11 +10,21 @@ html {
     font-family: NinjaFont;
     src: url(lastninja.ttf);
 }
-
 body {
     margin: 0;
     font-family: NinjaFont, 'Ravi Prakash', Helvetica, cursive;
     color: white;
+}
+
+.musicButton {
+    position: absolute;
+    font-size: 2vmin;
+}
+#playMusic{
+    top:0;
+}
+.musicButton:hover {
+    cursor: pointer;
 }
 
 h1 {
@@ -82,7 +92,13 @@ h1 {
 div .selected {
     background-color: #833438;
 }
-
+#gameSelector, h1, p {
+    text-shadow: 3px 5px 3px #000000;
+}
+#gameSelector {
+    text-align: center;
+    line-height: 2em;
+}
 #radioButtonContainer {
     width: 8vw;
     margin: 10px;

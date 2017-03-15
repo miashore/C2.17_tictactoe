@@ -31,6 +31,8 @@ function applyClickHandlers(){
     $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
     $('#reset').click(resetGame);
+    $('#pauseMusic').click(pauseMusic);
+    $('#playMusic').click(playMusic);
 }
 //**********************************************************************************************************************
 function cellClickHandler(){
@@ -55,6 +57,12 @@ function cellShowSymbol(cellThatWasClicked){
 }
 function playSound(){
     $('#karateChop').get(0).play();
+}
+function pauseMusic(){
+    $('#backgroundMusic').trigger('pause');
+}
+function playMusic(){
+    $('#backgroundMusic').trigger('play');
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
