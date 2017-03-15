@@ -23,6 +23,7 @@ var tttModel;
 var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
+    $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
     applyClickHandlers();
 });
 //**********************************************************************************************************************
@@ -37,6 +38,7 @@ function cellClickHandler(){
         if ($(this).text() === '') {
             changePlayer();
             cellShowSymbol(this);
+            playSound();
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
@@ -51,6 +53,9 @@ function updatePlayerVisual(){
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
+}
+function playSound(){
+    $('#karateChop').get(0).play();
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
@@ -165,7 +170,7 @@ function boardUpdated(fbGameObject){
     currentPlayer = fbGameObject.currentPlayer;
     winCheckArray = fbGameObject.gameState.slice();
     updatePlayerVisual();
-    //checkIfPlayerHasWon(currentPlayer);
+    checkIfPlayerHasWon(currentPlayer);
 }
 //**********************************************************************************************************************
 function saveData(){
