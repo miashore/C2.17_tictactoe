@@ -10,9 +10,6 @@ html {
     font-family: NinjaFont;
     src: url(lastninja.ttf);
 }
-#main-content{
-    position: relative;
-}
 body {
     margin: 0;
     font-family: NinjaFont, 'Ravi Prakash', Helvetica, cursive;
@@ -95,7 +92,13 @@ h1 {
 div .selected {
     background-color: #833438;
 }
-
+#gameSelector, h1, p {
+    text-shadow: 3px 5px 3px #000000;
+}
+#gameSelector {
+    text-align: center;
+    line-height: 2em;
+}
 #radioButtonContainer {
     width: 8vw;
     margin: 10px;
