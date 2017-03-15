@@ -17,17 +17,13 @@ var players = [
         }
     }
 ];
-//Possible winning combinations
-// [0,0,0] [0, , ] [ ,0, ] [ , ,0] [ , , ] [ , , ] [0, , ] [ , ,0]
-// [ , , ] [0, , ] [ ,0, ] [ , ,0] [0,0,0] [ , , ] [ ,0, ] [ ,0, ]
-// [ , , ] [0, , ] [ ,0, ] [ , ,0] [ , , ] [0,0,0] [ , ,0] [0, , ]
 var winCheckArray=[];
 var currentPlayer = 1;
 var tttModel;
 var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
-
+    $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
     applyClickHandlers();
 });
 //**********************************************************************************************************************
@@ -42,6 +38,7 @@ function cellClickHandler(){
         if ($(this).text() === '') {
             changePlayer();
             cellShowSymbol(this);
+            playSound();
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
@@ -56,6 +53,9 @@ function updatePlayerVisual(){
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
+}
+function playSound(){
+    $('#karateChop').get(0).play();
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
@@ -134,7 +134,6 @@ function populateWinCheckArray(){
 }
 //**********************************************************************************************************************
 function createGameBoard(){
-
     $("#gameContainer").empty();
     var boardPiece;
     var boardSize = $('.gameType:checked').val();
@@ -150,16 +149,15 @@ function createGameBoard(){
     }
     applyClickHandlers();
     populateWinCheckArray();
-    tttModel = new GenericFBModel('gamekey',boardUpdated);
+    tttModel = new GenericFBModel('RyuHayabusa',boardUpdated);
 }
 //**********************************************************************************************************************
-function boardUpdated(fbGameObject){//firebase object data
+function boardUpdated(fbGameObject){
     if(winCheckArray.length===0){
-        return
+        return;
     }
     for(var i = 0; i < fbGameObject.gameState.length; i++){
         for(var j = 0; j < fbGameObject.gameState[i].length; j++){
-           // if(newGameState)
             var row = i;
             var col = j;
             var playerID = fbGameObject.gameState[i][j];
