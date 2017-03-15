@@ -1,5 +1,5 @@
 html {
-    background: url(shaolinNinja.png) no-repeat center center fixed;
+    background: url(shaolinninja.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -73,7 +73,7 @@ h1 {
 }
 
 #playerOne {
-    background-image: url(ninja_icon.png);
+    background-image: url(ninjaicon.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
