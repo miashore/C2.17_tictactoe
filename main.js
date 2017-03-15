@@ -38,6 +38,7 @@ function cellClickHandler(){
         if ($(this).text() === '') {
             changePlayer();
             cellShowSymbol(this);
+            playSound();
             pushToWinArray(this);
         }
         checkIfPlayerHasWon(currentPlayer);
@@ -52,6 +53,9 @@ function updatePlayerVisual(){
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
+}
+function playSound(){
+    $('#karateChop').get(0).play();
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
