@@ -165,7 +165,7 @@ function boardUpdated(fbGameObject){
     currentPlayer = fbGameObject.currentPlayer;
     winCheckArray = fbGameObject.gameState.slice();
     updatePlayerVisual();
-    checkIfPlayerHasWon(currentPlayer);
+    //checkIfPlayerHasWon(currentPlayer);
 }
 //**********************************************************************************************************************
 function saveData(){
