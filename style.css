@@ -1,67 +1,121 @@
+html {
+    background: url(shaolinninja.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: NinjaFont;
+    src: url(lastninja.ttf);
+}
+
 body {
     margin: 0;
+    font-family: NinjaFont, 'Ravi Prakash', Helvetica, cursive;
+    color: white;
 }
 
 h1 {
     text-align: center;
+    color: white;
+    font-size: 3.5vw;
+}
+
+#nameDisplay #messageDisplay {
+    display: inline;
 }
 
 #gameContainer {
     width: 60vw;
     height: 60vh;
-    /* margin: 30px auto 0 auto; */
-    background-color: lightblue;
+    background-color: rgba(171,169,171,0.65);
     float: right;
     margin-right: 20vw;
 }
 
 .gameCells {
-    width: 20vw;
-    height: 20vh;
     border: 1px solid black;
     text-align: center;
-    font-size: 2em;
+    font-size: 4em;
+    padding-top: 4%;
     float: left;
     box-sizing: border-box;
+}
+
+#sidebarContainer {
+    left: 2%;
+    position: relative;
+    font-size: 1.5vw;
+    width: 8%;
 }
 
 #userContainer {
     height: 18vh;
     width: 51vh;
-    /*background-color: black;*/
     margin: 30px auto 0 auto;
 }
 
 .players {
     width: 50%;
     height: 100%;
-    border: 1px solid black;
-    text-align: center;
-    font-size: 2vw;
+    font-size: 7vw;
     box-sizing: border-box;
     float: left;
-    background-color: red;
+    background-color: #4e4c51;
+}
+
+#playerOne {
+    background-image: url(ninjaicon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#playerTwo {
+    background-image: url(aang.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: right;
 }
 
 div .selected {
-    background-color: green;
+    background-color: #833438;
 }
 
-#buttonRadioContainer {
+#radioButtonContainer {
     width: 8vw;
     margin: 10px;
 }
 
-#reset {
+#reset, #newGame {
     margin: 10px auto;
     display: block;
+    padding: 5px;
+    border-radius: 10%;
 }
 
 .gameType {
     display: block;
 }
-
-label {
+input[type=radio] {
     display: inline;
+    clear: none;
+}
+label {
+    display: block;
+    clear: none;
 }
 
+button[type=button] {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    background: #d10000;
+    text-decoration: none;
+}
+
+button[type=button]:hover {
+    background: #939799;
+    text-decoration: none;
+}
