@@ -33,6 +33,7 @@ function applyClickHandlers(){
     $('#reset').click(resetGame);
     $('#pauseMusic').click(pauseMusic);
     $('#playMusic').click(playMusic);
+    $('.modalArea').click(modalClose);
 }
 //**********************************************************************************************************************
 function cellClickHandler(){
@@ -64,6 +65,13 @@ function pauseMusic(){
 function playMusic(){
     $('#backgroundMusic').trigger('play');
 }
+function modalForNinjaWin() {
+    $('.modalArea').css('display', 'block');
+    canIClick = false;
+}
+function modalClose(){
+    $('.modalArea').css('display','none');
+}
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
@@ -89,10 +97,7 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber
                 || uWin[0][i + 2] === playerNumber && uWin[1][i + 1] === playerNumber && uWin[2][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                modalForNinjaWin();
             }
         }
     }
@@ -102,10 +107,7 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber
                 || uWin[0][i + 3] === playerNumber && uWin[1][i + 2] === playerNumber && uWin[2][i+1] === playerNumber && uWin[3][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                modalForNinjaWin();
             }
         }
     }
@@ -115,10 +117,7 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber && uWin[4][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber && uWin[i + 4][4] === playerNumber
                 ||uWin[0][i + 4] === playerNumber && uWin[1][i + 3] === playerNumber && uWin[2][i+2] === playerNumber && uWin[3][i+1] === playerNumber && uWin[4][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                modalForNinjaWin()
             }
         }
     }
