@@ -67,7 +67,11 @@ function playMusic(){
     $('#backgroundMusic').trigger('play');
 }
 function modalForNinjaWin() {
-    $('.modalArea').css('display', 'block');
+    $('#ninjaWin').css('display', 'block');
+    canIClick = false;
+}
+function modalForMonkWin() {
+    $('#monkWin').css('display', 'block');
     canIClick = false;
 }
 function modalClose(){
@@ -100,6 +104,8 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i + 2] === playerNumber && uWin[1][i + 1] === playerNumber && uWin[2][i] === playerNumber) {
                 if(currentPlayer === 0) {
                     modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
                 }
             }
         }
@@ -112,6 +118,8 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i + 3] === playerNumber && uWin[1][i + 2] === playerNumber && uWin[2][i+1] === playerNumber && uWin[3][i] === playerNumber) {
                 if(currentPlayer === 0) {
                     modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
                 }
             }
         }
@@ -124,6 +132,8 @@ function checkIfPlayerHasWon(playerNumber){
                 ||uWin[0][i + 4] === playerNumber && uWin[1][i + 3] === playerNumber && uWin[2][i+2] === playerNumber && uWin[3][i+1] === playerNumber && uWin[4][i] === playerNumber) {
                 if(currentPlayer === 0) {
                     modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
                 }
             }
         }

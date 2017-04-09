@@ -21,6 +21,11 @@ html {
     top:25%;
     left:37.5%;
 }
+#monkWinPic{
+    position: absolute;
+    top:25%;
+    left:37.5%;
+}
 @font-face {
     font-family: NinjaFont;
     src: url(lastninja.ttf);
