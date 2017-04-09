@@ -55,6 +55,7 @@ function updatePlayerVisual(){
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
+    console.log(currentPlayer+" clicked")
 }
 function playSound(){
     $('#karateChop').get(0).play();
@@ -155,7 +156,9 @@ function createGameBoard(){
     }
     applyClickHandlers();
     populateWinCheckArray();
-    tttModel = new GenericFBModel('RyuHayabusa',boardUpdated);
+    var $input = $('input').val();
+    console.log($input);
+    tttModel = new GenericFBModel($input,boardUpdated);
 }
 //**********************************************************************************************************************
 function boardUpdated(fbGameObject){
