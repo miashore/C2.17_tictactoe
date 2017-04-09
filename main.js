@@ -125,6 +125,7 @@ function checkIfPlayerHasWon(playerNumber){
 }
 //**********************************************************************************************************************
 function resetGame(){
+    $('#newGame').css('display','block');
     $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
@@ -142,23 +143,26 @@ function populateWinCheckArray(){
 }
 //**********************************************************************************************************************
 function createGameBoard(){
-    $("#gameContainer").empty();
-    var boardPiece;
-    var boardSize = $('.gameType:checked').val();
-    for (var i = 0; i < boardSize; i++) {
-        for (var j = 0; j < boardSize; j++) {
-            boardPiece = $('<div>').addClass('gameCells').css({
-                'width': (100/boardSize)+'%',
-                'height': (100/boardSize)+'%'
-            }).attr({row:[i], col:[j]});
-            $('#gameContainer').append(boardPiece);
+    if($('#passwordInput').val() !== '') {
+        $('#newGame').css('display', 'none');
+        $("#gameContainer").empty();
+        var boardPiece;
+        var boardSize = $('.gameType:checked').val();
+        for (var i = 0; i < boardSize; i++) {
+            for (var j = 0; j < boardSize; j++) {
+                boardPiece = $('<div>').addClass('gameCells').css({
+                    'width': (100 / boardSize) + '%',
+                    'height': (100 / boardSize) + '%'
+                }).attr({row: [i], col: [j]});
+                $('#gameContainer').append(boardPiece);
+            }
         }
+        applyClickHandlers();
+        populateWinCheckArray();
+        var $input = $('#passwordInput').val();
+        console.log($input);
+        tttModel = new GenericFBModel($input,boardUpdated);
     }
-    applyClickHandlers();
-    populateWinCheckArray();
-    var $input = $('#passwordInput').val();
-    console.log($input);
-    tttModel = new GenericFBModel($input,boardUpdated);
 }
 //**********************************************************************************************************************
 function boardUpdated(fbGameObject){
