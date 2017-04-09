@@ -96,7 +96,9 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber
                 || uWin[0][i + 2] === playerNumber && uWin[1][i + 1] === playerNumber && uWin[2][i] === playerNumber) {
-                modalForNinjaWin();
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }
             }
         }
     }
@@ -106,7 +108,9 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber
                 || uWin[0][i + 3] === playerNumber && uWin[1][i + 2] === playerNumber && uWin[2][i+1] === playerNumber && uWin[3][i] === playerNumber) {
-                modalForNinjaWin();
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }
             }
         }
     }
@@ -116,7 +120,9 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber && uWin[4][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber && uWin[i + 4][4] === playerNumber
                 ||uWin[0][i + 4] === playerNumber && uWin[1][i + 3] === playerNumber && uWin[2][i+2] === playerNumber && uWin[3][i+1] === playerNumber && uWin[4][i] === playerNumber) {
-                modalForNinjaWin()
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }
             }
         }
     }
