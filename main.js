@@ -20,7 +20,6 @@ var players = [
 var winCheckArray=[];
 var currentPlayer = 1;
 var tttModel;
-var firebaseObject;
 //**********************************************************************************************************************
 $(document).ready(function() {
     $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
@@ -55,7 +54,6 @@ function updatePlayerVisual(){
 }
 function cellShowSymbol(cellThatWasClicked){
     $(cellThatWasClicked).text(players[currentPlayer].symbol)
-    console.log(currentPlayer+" clicked")
 }
 function playSound(){
     $('#karateChop').get(0).play();
@@ -125,8 +123,8 @@ function checkIfPlayerHasWon(playerNumber){
 }
 //**********************************************************************************************************************
 function resetGame(){
+    $('.gameCells').remove();
     $('#newGame').css('display','block');
-    $('.gameCells').text('');
     currentPlayer =1;
     canIClick = true;
     populateWinCheckArray();
@@ -188,7 +186,7 @@ function boardUpdated(fbGameObject){
 }
 //**********************************************************************************************************************
 function saveData(){
-    firebaseObject = {
+    var firebaseObject = {
         gameState: winCheckArray,
         currentPlayer: currentPlayer
     };
