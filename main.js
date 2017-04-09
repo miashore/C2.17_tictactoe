@@ -131,6 +131,7 @@ function checkIfPlayerHasWon(playerNumber){
 function resetGame(){
     $('.gameCells').remove();
     $('#newGame').css('display','block');
+    $('#passwordInput').css('display','initial');
     currentPlayer =1;
     canIClick = true;
     populateWinCheckArray();
@@ -149,6 +150,7 @@ function populateWinCheckArray(){
 function createGameBoard(){
     if($('#passwordInput').val() !== '') {
         $('#newGame').css('display', 'none');
+        $('#passwordInput').css('display','none');
         $("#gameContainer").empty();
         var boardPiece;
         var boardSize = $('.gameType:checked').val();
@@ -164,7 +166,6 @@ function createGameBoard(){
         applyClickHandlers();
         populateWinCheckArray();
         var $input = $('#passwordInput').val();
-        console.log($input);
         tttModel = new GenericFBModel($input,boardUpdated);
     }
 }
