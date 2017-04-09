@@ -1,4 +1,6 @@
 var canIClick = true;
+var player1Click = true;
+var player2Click = false;
 var players = [
     {
         symbol:'+',
