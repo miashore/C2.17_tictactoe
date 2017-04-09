@@ -156,7 +156,7 @@ function createGameBoard(){
     }
     applyClickHandlers();
     populateWinCheckArray();
-    var $input = $('input').val();
+    var $input = $('#passwordInput').val();
     console.log($input);
     tttModel = new GenericFBModel($input,boardUpdated);
 }

@@ -13,6 +13,9 @@ html {
     position: fixed;
     display: none;
 }
+#passwordInput {
+    width: 170%;
+}
 #ninjaWinPic{
     position: absolute;
     top:25%;
