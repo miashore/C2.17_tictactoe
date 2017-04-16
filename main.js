@@ -1,4 +1,6 @@
 var canIClick = true;
+var player1Click = true;
+var player2Click = false;
 var players = [
     {
         symbol:'+',
@@ -20,33 +22,19 @@ var players = [
 var winCheckArray=[];
 var currentPlayer = 1;
 var tttModel;
-var firebaseObject;
-var players = {};
-var initialBoardUpdateReceived = false;
 //**********************************************************************************************************************
 $(document).ready(function() {
     $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
     applyClickHandlers();
-    setPlayerID();
 });
 //**********************************************************************************************************************
-function setPlayerID(){
-    if(localStorage.playerID !== undefined){
-        return;
-    }
-    var availableChars = 'abcdefghijklmnop0123456789';
-    var randomKey = '';
-    for(var i=0; i<20; i++){
-        randomKey += availableChars[Math.floor(Math.random()*availableChars.length)];
-    }
-    localStorage.playerID = randomKey;
-}
 function applyClickHandlers(){
     $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
     $('#reset').click(resetGame);
     $('#pauseMusic').click(pauseMusic);
     $('#playMusic').click(playMusic);
+    $('.modalArea').click(modalClose);
 }
 //**********************************************************************************************************************
 function cellClickHandler(){
@@ -78,6 +66,17 @@ function pauseMusic(){
 function playMusic(){
     $('#backgroundMusic').trigger('play');
 }
+function modalForNinjaWin() {
+    $('#ninjaWin').css('display', 'block');
+    canIClick = false;
+}
+function modalForMonkWin() {
+    $('#monkWin').css('display', 'block');
+    canIClick = false;
+}
+function modalClose(){
+    $('.modalArea').css('display','none');
+}
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
     for (var i = 0; i < winCheckArray.length; i++) {
@@ -103,10 +102,11 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber
                 || uWin[0][i + 2] === playerNumber && uWin[1][i + 1] === playerNumber && uWin[2][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
+                }
             }
         }
     }
@@ -116,10 +116,11 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber
                 || uWin[0][i + 3] === playerNumber && uWin[1][i + 2] === playerNumber && uWin[2][i+1] === playerNumber && uWin[3][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
+                }
             }
         }
     }
@@ -129,17 +130,20 @@ function checkIfPlayerHasWon(playerNumber){
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber && uWin[4][i] === playerNumber
                 || uWin[i][0] === playerNumber && uWin[i + 1][1] === playerNumber && uWin[i + 2][2] === playerNumber && uWin[i + 3][3] === playerNumber && uWin[i + 4][4] === playerNumber
                 ||uWin[0][i + 4] === playerNumber && uWin[1][i + 3] === playerNumber && uWin[2][i+2] === playerNumber && uWin[3][i+1] === playerNumber && uWin[4][i] === playerNumber) {
-                setTimeout(function () {
-                    alert(players[currentPlayer].name + ' has won')
-                }, 400);
-                canIClick = false;
+                if(currentPlayer === 0) {
+                    modalForNinjaWin();
+                }else{
+                    modalForMonkWin();
+                }
             }
         }
     }
 }
 //**********************************************************************************************************************
 function resetGame(){
-    $('.gameCells').text('');
+    $('.gameCells').remove();
+    $('#newGame').css('display','block');
+    $('#passwordInput').css('display','initial');
     currentPlayer =1;
     canIClick = true;
     populateWinCheckArray();
@@ -156,33 +160,29 @@ function populateWinCheckArray(){
 }
 //**********************************************************************************************************************
 function createGameBoard(){
-    $("#gameContainer").empty();
-    var boardPiece;
-    var boardSize = $('.gameType:checked').val();
-    for (var i = 0; i < boardSize; i++) {
-        for (var j = 0; j < boardSize; j++) {
-            boardPiece = $('<div>').addClass('gameCells').css({
-                'width': (100/boardSize)+'%',
-                'height': (100/boardSize)+'%'
-            }).attr({row:[i], col:[j]});
-            $('#gameContainer').append(boardPiece);
+    if($('#passwordInput').val() !== '') {
+        $('#newGame').css('display', 'none');
+        $('#passwordInput').css('display','none');
+        $("#gameContainer").empty();
+        var boardPiece;
+        var boardSize = $('.gameType:checked').val();
+        for (var i = 0; i < boardSize; i++) {
+            for (var j = 0; j < boardSize; j++) {
+                boardPiece = $('<div>').addClass('gameCells').css({
+                    'width': (100 / boardSize) + '%',
+                    'height': (100 / boardSize) + '%'
+                }).attr({row: [i], col: [j]});
+                $('#gameContainer').append(boardPiece);
+            }
         }
+        applyClickHandlers();
+        populateWinCheckArray();
+        var $input = $('#passwordInput').val();
+        tttModel = new GenericFBModel($input,boardUpdated);
     }
-    applyClickHandlers();
-    populateWinCheckArray();
-    tttModel = new GenericFBModel('RyuHayabusa',boardUpdated);
 }
 //**********************************************************************************************************************
 function boardUpdated(fbGameObject){
-    if(!initialBoardUpdateReceived){
-        initialBoardUpdateReceived=true;
-        players = fbGameObject.players;
-        if(players[playerID]===undefined){
-            console.log('we haven\'t joined the game yet');
-
-        }
-        return;
-    }
     if(winCheckArray.length===0){
         return;
     }
@@ -205,8 +205,7 @@ function boardUpdated(fbGameObject){
 }
 //**********************************************************************************************************************
 function saveData(){
-    firebaseObject = {
-        availablePlayers: availablePlayers,
+    var firebaseObject = {
         gameState: winCheckArray,
         currentPlayer: currentPlayer
     };

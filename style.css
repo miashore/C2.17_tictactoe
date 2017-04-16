@@ -5,7 +5,27 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
-
+.modalArea{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+    z-index: 1;
+    position: fixed;
+    display: none;
+}
+#passwordInput {
+    width: 170%;
+}
+#ninjaWinPic{
+    position: absolute;
+    top:25%;
+    left:37.5%;
+}
+#monkWinPic{
+    position: absolute;
+    top:25%;
+    left:37.5%;
+}
 @font-face {
     font-family: NinjaFont;
     src: url(lastninja.ttf);
@@ -96,7 +116,6 @@ div .selected {
 #gameSelector, h1, p {
     text-shadow: 3px 5px 3px #000000;
 }
-
 #radioButtonContainer {
     width: 8vw;
     margin: 10px;

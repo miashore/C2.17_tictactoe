@@ -11,6 +11,12 @@
 </head>
 <body>
 <div class="mainContainer">
+    <div class="modalArea" id="ninjaWin">
+        <div class="modal-content"><img src="ninjawin.jpg" id="ninjaWinPic"></div>
+    </div>
+    <div class="modalArea" id="monkWin">
+        <div class="modal-content"><img src="monkwins.jpg" id="monkWinPic"></div>
+    </div>
     <audio id="backgroundMusic" src="backgroundmusic.mp3" loop="loop"></audio>
     <audio id="karateChop" src="karatechop.mp3"></audio>
     <p id="playMusic" class="musicButton">Play</p>
@@ -29,9 +35,11 @@
             <label for="4"><input type="radio" name='gameSelect' class="gameType" value="4" id="4">4x4</label>
             <label for="5"><input type="radio" name='gameSelect' class="gameType" value="5" id="5">5x5</label>
         </div>
+        <input type="text" id="passwordInput" placeholder="key input"/>
         <button type="button" id="newGame">New Game</button>
         <button type="button" id="reset">Reset Game</button>
     </div>
+
 </div>
 </body>
 
