@@ -21,12 +21,26 @@ var winCheckArray=[];
 var currentPlayer = 1;
 var tttModel;
 var firebaseObject;
+var players = {};
+var initialBoardUpdateReceived = false;
 //**********************************************************************************************************************
 $(document).ready(function() {
     $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
     applyClickHandlers();
+    setPlayerID();
 });
 //**********************************************************************************************************************
+function setPlayerID(){
+    if(localStorage.playerID !== undefined){
+        return;
+    }
+    var availableChars = 'abcdefghijklmnop0123456789';
+    var randomKey = '';
+    for(var i=0; i<20; i++){
+        randomKey += availableChars[Math.floor(Math.random()*availableChars.length)];
+    }
+    localStorage.playerID = randomKey;
+}
 function applyClickHandlers(){
     $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
@@ -160,6 +174,15 @@ function createGameBoard(){
 }
 //**********************************************************************************************************************
 function boardUpdated(fbGameObject){
+    if(!initialBoardUpdateReceived){
+        initialBoardUpdateReceived=true;
+        players = fbGameObject.players;
+        if(players[playerID]===undefined){
+            console.log('we haven\'t joined the game yet');
+
+        }
+        return;
+    }
     if(winCheckArray.length===0){
         return;
     }
@@ -183,6 +206,7 @@ function boardUpdated(fbGameObject){
 //**********************************************************************************************************************
 function saveData(){
     firebaseObject = {
+        availablePlayers: availablePlayers,
         gameState: winCheckArray,
         currentPlayer: currentPlayer
     };
