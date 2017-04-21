@@ -143,7 +143,7 @@ function checkIfPlayerHasWon(playerNumber){
 function resetGame(){
     $('.gameCells').remove();
     $('#newGame').css('display','block');
-    $('#passwordInput').css('display','initial');
+    $('#reset').css('display','none');
     currentPlayer =1;
     canIClick = true;
     populateWinCheckArray();
@@ -162,6 +162,7 @@ function populateWinCheckArray(){
 function createGameBoard(){
     if($('#passwordInput').val() !== '') {
         $('#newGame').css('display', 'none');
+        $('#reset').css('display', 'block');
         $('#passwordInput').css('display','none');
         $("#gameContainer").empty();
         var boardPiece;
@@ -178,7 +179,9 @@ function createGameBoard(){
         applyClickHandlers();
         populateWinCheckArray();
         var $input = $('#passwordInput').val();
-        tttModel = new GenericFBModel($input,boardUpdated);
+        if(!tttModel) {
+            tttModel = new GenericFBModel($input, boardUpdated);
+        }
     }
 }
 //**********************************************************************************************************************

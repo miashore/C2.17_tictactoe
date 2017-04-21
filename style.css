@@ -5,6 +5,17 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+.ninjaModalText {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+.monkModalText {
+    position: absolute;
+    left: 50%;
+    top: 43%;
+    transform: translate(-50%,-50%)
+}
 .modalArea{
     height: 100%;
     width: 100%;
@@ -16,15 +27,12 @@ html {
 #passwordInput {
     width: 170%;
 }
-#ninjaWinPic{
+img.winPic {
     position: absolute;
-    top:25%;
-    left:37.5%;
-}
-#monkWinPic{
-    position: absolute;
-    top:25%;
-    left:37.5%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 20%;
 }
 @font-face {
     font-family: NinjaFont;
@@ -122,12 +130,16 @@ div .selected {
 }
 
 #reset, #newGame {
+    position: absolute;
     margin: 10px auto;
     display: block;
     padding: 5px;
     border-radius: 10%;
 }
 
+#reset {
+    display: none;
+}
 .gameType {
     display: block;
 }
