@@ -67,7 +67,7 @@ h1 {
 
 #gameContainer {
     width: 60vw;
-    height: 60vh;
+    height: 60vw;
     background-color: rgba(171,169,171,0.65);
     float: right;
     margin-right: 20vw;
