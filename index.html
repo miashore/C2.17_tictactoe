@@ -6,27 +6,27 @@
     <script src="firebaseConfig.js"></script>
     <script src="main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ravi+Prakash" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="style.css">-->
 </head>
 <body>
-<div class="mainContainer">
+<div class="container">
     <div class="modalArea" id="ninjaWin">
-        <div class="modal-content"><img src="https://s-media-cache-ak0.pinimg.com/originals/04/48/6b/04486bce4cb8be37390f89c71654be2f.jpg" class="winPic"><p class="ninjaModalText">Ninja Wins!</p></div>
+        <div><img src="https://s-media-cache-ak0.pinimg.com/originals/04/48/6b/04486bce4cb8be37390f89c71654be2f.jpg" class="winPic"></div>
     </div>
     <div class="modalArea" id="monkWin">
-        <div class="modal-content"><img src="https://i.ytimg.com/vi/D-oIMfLbIa4/maxresdefault.jpg" class="winPic"><p class="monkModalText">Monk Wins!</p></div>
+        <div><img src="https://i.ytimg.com/vi/D-oIMfLbIa4/maxresdefault.jpg" class="winPic"></div>
     </div>
     <audio id="backgroundMusic" src="backgroundmusic.mp3" loop="loop"></audio>
     <audio id="karateChop" src="karatechop.mp3"></audio>
-    <p id="playMusic" class="musicButton">Play</p>
-    <p id="pauseMusic" class="musicButton">Pause</p>
-    <h1>Shaolin Busters: Tic Tac Toe</h1>
-    <div id="gameContainer"></div>
-    <div id="userContainer">
-        <div id="playerOne" class="players selected" value="0">+</div>
-        <div id="playerTwo" class="players" value="1">O</div>
+    <div class="row">
+        <p class="btn col-2"><span id="playMusic">Play</span><br><span id="pauseMusic">Pause</span></p>
+        <h1 class="col-12 col-sm-8" style="text-align:center;">Shaolin Busters: Tic Tac Toe</h1>
     </div>
-    <div id="sidebarContainer">
+    <div id="gameContainer" class="col"></div>
+    <div id="sidebarContainer" class="col-sm-2 col-12">
         <div id="gameSelector">
             <h3>Game Selection</h3>
             <label for="3"><input type="radio" name='gameSelect' class="gameType" value="3" id="3" checked="checked">3x3</label>
@@ -37,6 +37,10 @@
         <button type="button" id="newGame">New Game</button>
         <button type="button" id="reset">Reset Game</button>
     </div>
+        <div class="row">
+            <div id="playerOne" class="col-sm-3 offset-sm-3 players selected" value="0">+</div>
+            <div id="playerTwo" class="col-sm-3 players" value="1">O</div>
+        </div>
 
 </div>
 </body>
