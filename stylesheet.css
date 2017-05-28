@@ -21,13 +21,9 @@ img.winPic {
 }
 
 #gameContainer {
-    height: 50vh;
+    height: 40vw;
     background-color: rgba(171,169,171,0.65);
     padding: 0;
-}
-
-#reset{
-    display: none;
 }
 
 .gameCells {
@@ -65,6 +61,17 @@ div{
     text-align: right;
 }
 
+#gameSelector{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%,-50%);
+}
+
+.gameType{
+    display: block;
+}
+
 .players {
     font-size: 7vw;
     box-sizing: border-box;
@@ -74,4 +81,13 @@ div{
 
 div.selected {
     background-color: #833438;
+}
+
+#sidebarContainer{
+    height: 100%;
+    width: 100vw;
+    z-index: 1;
+    position: fixed;
+    background-color: rgba(100,100,100,.5);
+    text-align: center;
 }

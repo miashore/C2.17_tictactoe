@@ -12,31 +12,33 @@
     <!--<link rel="stylesheet" href="style.css">-->
 </head>
 <body>
+<div id="sidebarContainer" class="col-sm-10 offset-sm-1 col-12">
+    <div id="gameSelector">
+        <h3>Game Selection</h3>
+        <label class="gameType" for="3"><input class="boardSize" type="radio" name='gameSelect' value="3" id="3" checked="checked">3x3</label>
+        <label class="gameType" for="4"><input class="boardSize" type="radio" name='gameSelect' value="4" id="4">4x4</label>
+        <label class="gameType" for="5"><input class="boardSize" type="radio" name='gameSelect' value="5" id="5">5x5</label>
+        <br>
+        <input type="text" id="passwordInput" placeholder="key input"/>
+        <br>
+        <button type="button" id="newGame">New Game</button>
+    </div>
+</div>
+<div class="modalArea" id="ninjaWin">
+    <div><img src="https://s-media-cache-ak0.pinimg.com/originals/04/48/6b/04486bce4cb8be37390f89c71654be2f.jpg" class="winPic"></div>
+</div>
+<div class="modalArea" id="monkWin">
+    <div><img src="https://i.ytimg.com/vi/D-oIMfLbIa4/maxresdefault.jpg" class="winPic"></div>
+</div>
 <div class="container">
-    <div class="modalArea" id="ninjaWin">
-        <div><img src="https://s-media-cache-ak0.pinimg.com/originals/04/48/6b/04486bce4cb8be37390f89c71654be2f.jpg" class="winPic"></div>
-    </div>
-    <div class="modalArea" id="monkWin">
-        <div><img src="https://i.ytimg.com/vi/D-oIMfLbIa4/maxresdefault.jpg" class="winPic"></div>
-    </div>
     <audio id="backgroundMusic" src="backgroundmusic.mp3" loop="loop"></audio>
     <audio id="karateChop" src="karatechop.mp3"></audio>
     <div class="row">
         <p class="btn col-2"><span id="playMusic">Play</span><br><span id="pauseMusic">Pause</span></p>
         <h1 class="col-12 col-sm-8" style="text-align:center;">Shaolin Busters: Tic Tac Toe</h1>
     </div>
-    <div id="gameContainer" class="col"></div>
-    <div id="sidebarContainer" class="col-sm-2 col-12">
-        <div id="gameSelector">
-            <h3>Game Selection</h3>
-            <label for="3"><input type="radio" name='gameSelect' class="gameType" value="3" id="3" checked="checked">3x3</label>
-            <label for="4"><input type="radio" name='gameSelect' class="gameType" value="4" id="4">4x4</label>
-            <label for="5"><input type="radio" name='gameSelect' class="gameType" value="5" id="5">5x5</label>
-        </div>
-        <input type="text" id="passwordInput" placeholder="key input"/>
-        <button type="button" id="newGame">New Game</button>
-        <button type="button" id="reset">Reset Game</button>
-    </div>
+    <div id="gameContainer" class="col-sm-8 offset-sm-2"></div>
+
         <div class="row">
             <div id="playerOne" class="col-sm-3 offset-sm-3 players selected" value="0">+</div>
             <div id="playerTwo" class="col-sm-3 players" value="1">O</div>

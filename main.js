@@ -24,14 +24,14 @@ var currentPlayer = 1;
 var tttModel;
 //**********************************************************************************************************************
 $(document).ready(function() {
-    $("#backgroundMusic").prop('volume',0).animate({volume:.1},15000).get(0).play();
+    $("#backgroundMusic").prop('volume',0).animate({volume:.8},5000).get(0).play();
     applyClickHandlers();
 });
 //**********************************************************************************************************************
 function applyClickHandlers(){
     $('#newGame').click(createGameBoard);
     $('.gameCells').click(cellClickHandler);
-    $('#reset').click(resetGame);
+    // $('#reset').click(resetGame);
     $('#pauseMusic').click(pauseMusic);
     $('#playMusic').click(playMusic);
     $('.modalArea').click(modalClose);
@@ -76,6 +76,9 @@ function modalForMonkWin() {
 }
 function modalClose(){
     $('.modalArea').css('display','none');
+    $("#sidebarContainer").css("display","inline-block");
+    $('#newGame').css("display","inline-block");
+    resetGame();
 }
 //**********************************************************************************************************************
 function pushToWinArray(elementClicked) {
@@ -96,7 +99,7 @@ function pushToWinArray(elementClicked) {
 function checkIfPlayerHasWon(playerNumber){
     playSound();
     var uWin = winCheckArray;
-    if($('.gameType:checked').val() == 3) {
+    if($('.boardSize:checked').val() == 3) {
         for (var i = 0; i < uWin.length; i++) {
             if (uWin[i][0] === playerNumber && uWin[i][1] === playerNumber && uWin[i][2] === playerNumber
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber
@@ -110,7 +113,7 @@ function checkIfPlayerHasWon(playerNumber){
             }
         }
     }
-    else if($('.gameType:checked').val() == 4) {
+    else if($('.boardSize:checked').val() == 4) {
         for (var i = 0; i < uWin.length; i++) {
             if (uWin[i][0] === playerNumber && uWin[i][1] === playerNumber && uWin[i][2] === playerNumber && uWin[i][3] === playerNumber
                 || uWin[0][i] === playerNumber && uWin[1][i] === playerNumber && uWin[2][i] === playerNumber && uWin[3][i] === playerNumber
@@ -142,15 +145,14 @@ function checkIfPlayerHasWon(playerNumber){
 //**********************************************************************************************************************
 function resetGame(){
     $('.gameCells').remove();
-    $('#newGame').css('display','block');
-    $('#reset').css('display','none');
+    $('#newGame').css('display','inline-block');
     currentPlayer =1;
     canIClick = true;
     populateWinCheckArray();
     saveData();
 }
 function populateWinCheckArray(){
-    var boardSize = $('.gameType:checked').val();
+    var boardSize = $('.boardSize:checked').val();
     for (var i = 0; i < boardSize; i++) {
         winCheckArray[i]=[];
         for (var j = 0; j < boardSize; j++) {
@@ -162,11 +164,10 @@ function populateWinCheckArray(){
 function createGameBoard(){
     if($('#passwordInput').val() !== '') {
         $('#newGame').css('display', 'none');
-        $('#reset').css('display', 'block');
         $('#passwordInput').css('display','none');
         $("#gameContainer").empty();
         var boardPiece;
-        var boardSize = $('.gameType:checked').val();
+        var boardSize = $('.boardSize:checked').val();
         for (var i = 0; i < boardSize; i++) {
             for (var j = 0; j < boardSize; j++) {
                 boardPiece = $('<div>').addClass('gameCells').css({
@@ -182,6 +183,7 @@ function createGameBoard(){
         if(!tttModel) {
             tttModel = new GenericFBModel($input, boardUpdated);
         }
+        $("#sidebarContainer").css("display","none");
     }
 }
 //**********************************************************************************************************************
