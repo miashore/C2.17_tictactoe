@@ -21,8 +21,8 @@ img.winPic {
 }
 
 #gameContainer {
-    height: 40vw;
     background-color: rgba(171,169,171,0.65);
+    height: 40vw;
     padding: 0;
 }
 
@@ -39,6 +39,7 @@ body {
     background-image: url('ninjamonk.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 100vh;
 }
 
@@ -49,6 +50,7 @@ div{
 
 #playerOne {
     background-image: url(ninjaicon.png);
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: left;
@@ -57,6 +59,7 @@ div{
 #playerTwo {
     background-image: url(aang.png);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     text-align: right;
 }
@@ -74,6 +77,7 @@ div{
 
 .players {
     font-size: 7vw;
+    height: 20vh;
     box-sizing: border-box;
     float: left;
     background-color: #4e4c51;
@@ -90,4 +94,24 @@ div.selected {
     position: fixed;
     background-color: rgba(100,100,100,.5);
     text-align: center;
+}
+#title{
+    font-size: 4vmin;
+}
+
+@media (max-width: 575px){
+    #gameContainer{
+        height: 40vh;
+    }
+    body{
+
+    }
+    #title{
+        font-size: 6vmin;
+    }
+}
+@media (min-width: 1800px){
+    #gameContainer{
+        height: 30vw;
+    }
 }
