@@ -103,7 +103,11 @@ div.selected {
 #title{
     font-size: 4vmin;
 }
-
+@media (min-width: 1100px){
+    #sidebarContainer{
+        top: 20%
+    }
+}
 @media (max-width: 575px){
     #gameContainer{
         height: 40vh;
