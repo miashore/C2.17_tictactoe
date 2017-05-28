@@ -12,6 +12,10 @@
     display: none;
 }
 
+.music:hover {
+    cursor: pointer;
+}
+
 img.winPic {
     position: fixed;
     left: 50%;
@@ -52,7 +56,7 @@ div{
     background-image: url(ninjaicon.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     text-align: left;
 }
 
@@ -60,7 +64,7 @@ div{
     background-image: url(aang.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     text-align: right;
 }
 
@@ -92,7 +96,6 @@ div.selected {
     width: 100vw;
     z-index: 1;
     position: fixed;
-    background-color: rgba(100,100,100,.5);
     text-align: center;
 }
 #title{
@@ -103,11 +106,12 @@ div.selected {
     #gameContainer{
         height: 40vh;
     }
-    body{
-
-    }
     #title{
         font-size: 6vmin;
+    }
+    #sidebarContainer{
+        top: 10%;
+        font-size: 4vmin;
     }
 }
 @media (min-width: 1800px){

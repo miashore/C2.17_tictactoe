@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script src="genericFirebaseBackend.js"></script>
     <script src="firebaseConfig.js"></script>
@@ -14,7 +15,7 @@
 <body>
 <div id="sidebarContainer" class="col-sm-10 offset-sm-1 col-12">
     <div id="gameSelector">
-        <h3>Game Selection</h3>
+        <h3 id="sideBarTitle">Game Selection</h3>
         <label class="gameType" for="3"><input class="boardSize" type="radio" name='gameSelect' value="3" id="3" checked="checked">3x3</label>
         <label class="gameType" for="4"><input class="boardSize" type="radio" name='gameSelect' value="4" id="4">4x4</label>
         <label class="gameType" for="5"><input class="boardSize" type="radio" name='gameSelect' value="5" id="5">5x5</label>
@@ -34,7 +35,7 @@
     <audio id="backgroundMusic" src="backgroundmusic.mp3" loop="loop"></audio>
     <audio id="karateChop" src="karatechop.mp3"></audio>
     <div class="row">
-        <p class="btn col-2"><span id="playMusic">Play</span><br><span id="pauseMusic">Pause</span></p>
+        <p class="col-2"><span id="playMusic" class="btn btn-outline-info music">Play</span><br><span id="pauseMusic" class="btn btn-outline-info music">Pause</span></p>
         <h1 class="col-12 col-sm-8" id="title" style="text-align:center;">Shaolin Busters: Tic Tac Toe</h1>
     </div>
     <div id="gameContainer" class="col-sm-8 offset-sm-2"></div>
