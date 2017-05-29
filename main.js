@@ -3,7 +3,7 @@ var player1Click = true;
 var player2Click = false;
 var players = [
     {
-        symbol:'+',
+        symbol:'ninjaicon.png',
         name:'Ninja',
         onBecomeCurrentPlayer: function(){
             $('#playerOne').removeClass('selected');
@@ -11,7 +11,7 @@ var players = [
         }
     },
     {
-        symbol: 'O',
+        symbol: 'aang.png',
         name:'Monk',
         onBecomeCurrentPlayer: function(){
             $('#playerTwo').removeClass('selected');
@@ -55,7 +55,12 @@ function updatePlayerVisual(){
     players[currentPlayer].onBecomeCurrentPlayer();
 }
 function cellShowSymbol(cellThatWasClicked){
-    $(cellThatWasClicked).text(players[currentPlayer].symbol)
+    $(cellThatWasClicked).css({
+        "background-image":"url("+players[currentPlayer].symbol+")",
+        "background-size":"contain",
+        "background-position":"center",
+        "background-repeat":"no-repeat"
+    });
 }
 function playSound(){
     $('#karateChop').get(0).play();
@@ -197,7 +202,11 @@ function boardUpdated(fbGameObject){
             var col = j;
             var playerID = fbGameObject.gameState[i][j];
             if(playerID!==''){
-                $('.gameCells[row='+row+'][col='+col+']').text(players[playerID].symbol);
+                $('.gameCells[row='+row+'][col='+col+']').css({
+                    "background-image":"url("+players[currentPlayer].symbol+")",
+                    "background-size":"contain",
+                    "background-position":"center"
+                });
             } else {
                 $('.gameCells[row='+row+'][col='+col+']').text('');
             }
